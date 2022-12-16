@@ -210,44 +210,28 @@ namespace ToDoApp
 
             Console.WriteLine("\n\n\n" + json[user].ToDoList[0].ListTitle);
 
-            if (json[0].ToDoList[0].Task.Count == 0)
+            if (json[user].ToDoList[0].Task.Count == 0)
             {
                 Console.WriteLine("Ooops.. empty! No to-do's here!");
+                return;
             }
 
-            for(int i = 0; i < json[user].ToDoList.Count; i++)
+            for(int i = 0; i < json[user].ToDoList[0].Task.Count;  i++)
             {
-                if (task.Completed == true)
+                if (json[user].ToDoList[0].Task[i].Completed == true)
                 {
 
                     Console.ForegroundColor = ConsoleColor.Green;
                 }
 
-                if (task.Completed == false)
+                if (json[user].ToDoList[0].Task[i].Completed == false)
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
                 }
 
-                Console.WriteLine(json[user].ToDoList[0].Task);
+                Console.WriteLine(json[user].ToDoList[0].Task[i].TaskTitle);
                 Console.ForegroundColor = ConsoleColor.White;
             }
-            //foreach (var task in json[0].ToDoList[0].Task)
-            //{
-
-            //    if (task.Completed == true)
-            //    {
-
-            //        Console.ForegroundColor = ConsoleColor.Green;
-            //    }
-
-            //    if (task.Completed == false)
-            //    {
-            //        Console.ForegroundColor = ConsoleColor.Red;
-            //    }
-
-            //    Console.WriteLine(json[user].ToDoList[0].Task);
-            //    Console.ForegroundColor = ConsoleColor.White;
-            //}
 
             return;
 
@@ -265,15 +249,10 @@ namespace ToDoApp
                 Console.WriteLine(json[user].ToDoList[i].ListTitle + "\nPress: " + "[" + index + "]" + "\n");
             }
 
-            //foreach (var title in json[user].ToDoList)
-            //{
-            //    index++;
-            //    Console.WriteLine(json[user].ToDoList[index].ListTitle + "\nPress: " + "[" + index + "]" + "\n");
-            //}
         }
 
 
-        //public static void SortLists()
+        //public static void SortLists(int userIndex)
         //{
         //    Console.WriteLine("HOW DO YOU WANT TO SORT?\n" +
         //        "[N]ewest list\n" +
@@ -292,7 +271,7 @@ namespace ToDoApp
         //    switch (howToSort)
         //    {
         //        case "n":
-        //            SortByNewest();
+        //            SortByNewest(userIndex);
         //            break;
         //        case "o":
         //            SortByOldest();
@@ -308,11 +287,11 @@ namespace ToDoApp
         //    }
         //}
 
-        //public static void SortByNewest()
+        //public static void SortByNewest(int user)
         //{
         //    var json = CreateUserFile.GetJson();
-        //    json = json.OrderBy(x => x.Date).ToList();
-        //    CreateToDoListFile.UpDate(json);
+        //    json = json[user].ToDoList[0].ListTitle.OrderBy(x => x.Name).toList();
+        //     CreateUserFile.UpDate(json);
         //    Console.WriteLine("NEW ORDER SAVED.");
         //}
 
@@ -399,36 +378,36 @@ namespace ToDoApp
 
 
 
-        //public static void ShowWeeklyLists()
-        //{
-        //    var json = CreateToDoListFile.GetJson();
-        //    Console.WriteLine("\n\n\nYOUR LISTS TO BE COMPLETED IN A WEEK :-)\n");
+        public static void ShowWeeklyLists(int user)
+        {
+            var json = CreateUserFile.GetJson();
+            Console.WriteLine("\n\n\nYOUR LISTS TO BE COMPLETED IN A WEEK :-)\n");
 
-        //    for (int i = 0; i < json.Count; i++)
-        //    {
-        //        if (json[i].ThisWeek == true && json[i].Expired == false)
-        //        {
-        //            bool complete = json[i].Task.All(x => x.Completed == true);
-        //            bool empty = json[i].Task.Count == 0;
-        //            if (!complete || empty)
-        //            {
-        //                DateTime start = DateTime.Parse(json[i].Date);
-        //                DateTime expiry = start.AddDays(7);
-        //                TimeSpan span = expiry - DateTime.Now;
-        //                Console.WriteLine("\n\n" + json[i].ListTitle + "\n*" + span.Days + " days left to complete *");
-        //            }
+            for (int i = 0; i < json[user].ToDoList.Count; i++)
+            {
+                if (json[user].ToDoList[i].ThisWeek == true && json[user].ToDoList[i].Expired == false)
+                {
+                    bool complete = json[user].ToDoList[i].Task.All(x => x.Completed == true);
+                    bool empty = json[user].ToDoList[i].Task.Count == 0;
+                    if (!complete || empty)
+                    {
+                        DateTime start = DateTime.Parse(json[user].ToDoList[i].Date);
+                        DateTime expiry = start.AddDays(7);
+                        TimeSpan span = expiry - DateTime.Now;
+                        Console.WriteLine("\n\n" + json[user].ToDoList[i].ListTitle + "\n*" + span.Days + " days left to complete *");
+                    }
 
-        //        }
-        //    }
+                }
+            }
 
 
-        //    var noLists = json.All(x => x.ThisWeek == false);
-        //    if (noLists == true)
-        //    {
-        //        Console.WriteLine("No lists added yet!");
-        //        return;
-        //    }
-        //}
+            var noLists = json[user].ToDoList.All(x => x.ThisWeek == false);
+            if (noLists == true)
+            {
+                Console.WriteLine("No lists added yet!");
+                return;
+            }
+        }
 
 
         //public static void UnFinishedLists()

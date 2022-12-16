@@ -65,13 +65,13 @@ namespace ToDoApp
 
         public static bool IsAllComplete(int num, int user)
         {
-            var json = CreateToDoListFile.GetJson();
+            var json = CreateUserFile.GetJson();
 
-            bool allCompleted = json[num].Task.All(x => x.Completed == true);
+            bool allCompleted = json[user].ToDoList[num].Task.All(x => x.Completed == true);
             if (allCompleted)
             {
                 Console.WriteLine("\n\n\n\nYou're a star baby!\nAll to-do's are completed in this list!\n");
-                Console.WriteLine(json[num].ListTitle);
+                Console.WriteLine(json[user].ToDoList[num].ListTitle);
                 AddNewTask.EveryTaskInList(num, user);
                 return true;
             }

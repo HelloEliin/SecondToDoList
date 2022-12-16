@@ -49,24 +49,24 @@ namespace ToDoApp
                 case "r":
                     CreateToDoList.ChangeListName(userIndex);
                     break;
-                //case "a":
-                //    AddNewTask.AddTask(userIndex);
-                //    break;
-                //case "m":
-                //    AddNewTask.isCompleted(userIndex);
-                //    break;
-                //case "t":
-                //    TaskMenu(userIndex);
-                //    break;
-                //case "d":
-                //    AddNewTask.DeleteTask(userIndex);
-                //    break;
+                case "a":
+                    AddNewTask.AddTask(userIndex);
+                    break;
+                case "m":
+                    AddNewTask.isCompleted(userIndex);
+                    break;
+                case "t":
+                    TaskMenu(userIndex);
+                    break;
+                case "d":
+                    AddNewTask.DeleteTask(userIndex);
+                    break;
                 //case "s":
                 //    CreateToDoList.SortLists(userIndex);
                 //    break;
-                //case "1":
-                //    CreateToDoList.ShowWeeklyLists(userIndex);
-                //    break;
+                case "1":
+                    CreateToDoList.ShowWeeklyLists(userIndex);
+                    break;
                 //case "2":
                 //    CreateToDoList.AddListToCompleteInAWeek(userIndex);
                 //    break;
