@@ -1,0 +1,15 @@
+C:\Users\elinr\source\repos\ToDoApp\ToDoApp\obj\Debug\net6.0\ToDoApp.csproj.AssemblyReference.cache
+C:\Users\elinr\source\repos\ToDoApp\ToDoApp\obj\Debug\net6.0\ToDoApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\elinr\source\repos\ToDoApp\ToDoApp\obj\Debug\net6.0\ToDoApp.AssemblyInfoInputs.cache
+C:\Users\elinr\source\repos\ToDoApp\ToDoApp\obj\Debug\net6.0\ToDoApp.AssemblyInfo.cs
+C:\Users\elinr\source\repos\ToDoApp\ToDoApp\obj\Debug\net6.0\ToDoApp.csproj.CoreCompileInputs.cache
+C:\Users\elinr\source\repos\ToDoApp\ToDoApp\bin\Debug\net6.0\ToDoApp.exe
+C:\Users\elinr\source\repos\ToDoApp\ToDoApp\bin\Debug\net6.0\ToDoApp.deps.json
+C:\Users\elinr\source\repos\ToDoApp\ToDoApp\bin\Debug\net6.0\ToDoApp.runtimeconfig.json
+C:\Users\elinr\source\repos\ToDoApp\ToDoApp\bin\Debug\net6.0\ToDoApp.dll
+C:\Users\elinr\source\repos\ToDoApp\ToDoApp\bin\Debug\net6.0\ToDoApp.pdb
+C:\Users\elinr\source\repos\ToDoApp\ToDoApp\obj\Debug\net6.0\ToDoApp.dll
+C:\Users\elinr\source\repos\ToDoApp\ToDoApp\obj\Debug\net6.0\refint\ToDoApp.dll
+C:\Users\elinr\source\repos\ToDoApp\ToDoApp\obj\Debug\net6.0\ToDoApp.pdb
+C:\Users\elinr\source\repos\ToDoApp\ToDoApp\obj\Debug\net6.0\ToDoApp.genruntimeconfig.cache
+C:\Users\elinr\source\repos\ToDoApp\ToDoApp\obj\Debug\net6.0\ref\ToDoApp.dll

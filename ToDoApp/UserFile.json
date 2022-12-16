@@ -1,0 +1,45 @@
+[
+  {
+    "FirstName": "Elin",
+    "LastName": "Holm",
+    "UserName": "admin",
+    "Email": "elin.@gmail.com",
+    "Password": "aaaaaaA\u002B",
+    "AccessLevelOne": true,
+    "AccessLevelMod": false,
+    "AccessLevelAdm": false,
+    "ToDoList": null
+  },
+  {
+    "FirstName": "elin",
+    "LastName": "elin",
+    "UserName": "e",
+    "Email": "eln.@",
+    "Password": "e",
+    "AccessLevelOne": true,
+    "AccessLevelMod": false,
+    "AccessLevelAdm": false,
+    "ToDoList": [
+      {
+        "ListTitle": "JULHANDEL",
+        "Task": [
+        ],
+        "Date": "2022-12-16 13:01:13",
+        "ThisWeek": false,
+        "Expired": false
+      }
+    ]
+  },
+  {
+    "FirstName": "mod",
+    "LastName": "mod",
+    "UserName": "mod",
+    "Email": "mid.@",
+    "Password": "aaaaaaA\u002B",
+    "AccessLevelOne": true,
+    "AccessLevelMod": false,
+    "AccessLevelAdm": false,
+    "ToDoList": [
+    ]
+  }
+]
