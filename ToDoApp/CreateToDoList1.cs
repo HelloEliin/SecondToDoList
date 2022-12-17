@@ -206,7 +206,9 @@ namespace ToDoApp
             var json = CreateUserFile.GetJson();
 
             Validation.IsThereAnyLists(user);
-            json[user].ToDoList.Reverse();
+         
+            json[user].ToDoList = json[user].ToDoList.OrderByDescending(ToDoList => ToDoList.Date).ToList();
+
 
             Console.WriteLine("\n\n\n" + json[user].ToDoList[0].ListTitle);
 
@@ -255,8 +257,8 @@ namespace ToDoApp
         public static void SortLists(int userIndex)
         {
             Console.WriteLine("HOW DO YOU WANT TO SORT?\n" +
-                "[N]ewest list\n" +
-                "[O]ldest list\n" +
+                "[N]ew lists first\n" +
+                "[O]ldest list first\n" +
                 "[B]y name\n");
             var howToSort = Console.ReadLine().ToLower();
             if (string.IsNullOrEmpty(howToSort))
@@ -316,8 +318,6 @@ namespace ToDoApp
             var json = CreateUserFile.GetJson();
 
             json[user].ToDoList = json[user].ToDoList.OrderBy(ToDoList => ToDoList.ListTitle).ToList();
-
-            //json = json.OrderBy(x => x.ListTitle).ToList();
             CreateUserFile.UpDate(json);
             Console.WriteLine("NEW ORDER SAVED.");
         }
@@ -376,6 +376,11 @@ namespace ToDoApp
             if (!validOrNot)
             {
                 Console.WriteLine("You have to choose a number.");
+                return;
+            }
+            if (listToMove < json[user].ToDoList.Count - 1 || listToMove > 0)
+            {
+                Console.WriteLine("That list don't exist");
                 return;
             }
 
