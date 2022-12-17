@@ -273,12 +273,12 @@ namespace ToDoApp
                 case "n":
                     SortByNewest(userIndex);
                     break;
-                //case "o":
-                //    SortByOldest(userIndex);
-                //    break;
-                //case "b":
-                //    SortByName(userIndex);
-                //    break;
+                case "o":
+                    SortByOldest(userIndex);
+                    break;
+                case "b":
+                    SortByName(userIndex);
+                    break;
                 case "h":
                     break;
                 default:
@@ -287,36 +287,40 @@ namespace ToDoApp
             }
         }
 
-        public static void SortByNewest(int user)
+        public static void SortByOldest(int user)
         {
             var json = CreateUserFile.GetJson();
 
-            json = json[user].ToDoList.All.OrderBy(ToDoList => ToDoList.Date);
-            
+            json[user].ToDoList = json[user].ToDoList.OrderBy(ToDoList => ToDoList.Date).ToList();
 
             CreateUserFile.UpDate(json);
             Console.WriteLine("NEW ORDER SAVED.");
         }
 
 
-        //public static void SortByOldest(int user)
-        //{
+        public static void SortByNewest(int user)
+        {
 
-        //    var json = CreateUserFile.GetJson();
-        //    json = json.OrderByDescending(x => x.Date).ToList();
-        //    CreateUserFile.UpDate(json);
-        //    Console.WriteLine("NEW ORDER SAVED.");
+            var json = CreateUserFile.GetJson();
 
-        //}
+            json[user].ToDoList = json[user].ToDoList.OrderByDescending(ToDoList => ToDoList.Date).ToList();
+
+            CreateUserFile.UpDate(json);
+            Console.WriteLine("NEW ORDER SAVED.");
+
+        }
 
 
-        //public static void SortByName(int user)
-        //{
-        //    var json = CreateUserFile.GetJson();
-        //    json = json.OrderBy(x => x.ListTitle).ToList();
-        //    CreateUserFile.UpDate(json);
-        //    Console.WriteLine("NEW ORDER SAVED.");
-        //}
+        public static void SortByName(int user)
+        {
+            var json = CreateUserFile.GetJson();
+
+            json[user].ToDoList = json[user].ToDoList.OrderBy(ToDoList => ToDoList.ListTitle).ToList();
+
+            //json = json.OrderBy(x => x.ListTitle).ToList();
+            CreateUserFile.UpDate(json);
+            Console.WriteLine("NEW ORDER SAVED.");
+        }
 
 
         public static void FinishedLists(int user)

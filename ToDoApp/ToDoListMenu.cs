@@ -61,9 +61,10 @@ namespace ToDoApp
                 case "d":
                     AddNewTask.DeleteTask(userIndex);
                     break;
-                //case "s":
-                //    CreateToDoList.SortLists(userIndex);
-                //    break;
+                case "s":
+                  
+                    CreateToDoList.SortLists(userIndex);
+                    break;
                 case "1":
                     CreateToDoList.ShowWeeklyLists(userIndex);
                     break;
