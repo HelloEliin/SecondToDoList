@@ -32,8 +32,8 @@ namespace ToDoList
 
                     case "v":
 
-                        isThereAnyLists = Validation.IsThereAnyLists(userIndex);
-                        if (isThereAnyLists == true)
+                        //isThereAnyLists = Validation.IsThereAnyLists(userIndex);
+                        //if (isThereAnyLists == true)
                         {
                             //CreateToDoList.ViewAllList(userIndex);
                             ToDoListMenu.ListMenu(userIndex);
@@ -47,12 +47,12 @@ namespace ToDoList
 
                     case "d":
 
-                        //isThereAnyLists = Validation.IsThereAnyLists(userIndex);
-                        //if (isThereAnyLists == true)
-                        //{
-                        //    CreateToDoList.DeleteList();
-                        //}
-                        //break;
+                        isThereAnyLists = Validation.IsThereAnyLists(userIndex);
+                        if (isThereAnyLists == true)
+                        {
+                            CreateToDoList.DeleteList(userIndex);
+                        }
+                        break;
 
                     case "q":
                         Console.WriteLine("Do you want to quit? y/n");

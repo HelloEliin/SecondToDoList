@@ -67,15 +67,15 @@ namespace ToDoApp
                 case "1":
                     CreateToDoList.ShowWeeklyLists(userIndex);
                     break;
-                //case "2":
-                //    CreateToDoList.AddListToCompleteInAWeek(userIndex);
-                //    break;
-                //case "3":
-                //    CreateToDoList.UnFinishedLists(userIndex);
-                //    break;
-                //case "4":
-                //    CreateToDoList.FinishedLists(userIndex);
-                //    break;
+                case "2":
+                    CreateToDoList.AddListToCompleteInAWeek(userIndex);
+                    break;
+                case "3":
+                    CreateToDoList.UnFinishedLists(userIndex);
+                    break;
+                case "4":
+                    CreateToDoList.FinishedLists(userIndex);
+                    break;
                 default:
                     Console.WriteLine("Try again.");
                     break;
