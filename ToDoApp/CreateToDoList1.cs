@@ -259,7 +259,7 @@ namespace ToDoApp
 
         public static void SortLists(int userIndex)
         {
-            Console.WriteLine("HOW DO YOU WANT TO SORT?\n" +
+            Console.WriteLine("HOW DO YOU WANT TO ORDER YOUR LISTS?\n" +
                 "[N]ew lists first\n" +
                 "[O]ldest list first\n" +
                 "[B]y name\n");
