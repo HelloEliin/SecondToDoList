@@ -6,8 +6,8 @@
     "Email": "eln.@",
     "Password": "e",
     "AccessLevelOne": false,
-    "AccessLevelMod": false,
-    "AccessLevelAdm": true,
+    "AccessLevelMod": true,
+    "AccessLevelAdm": false,
     "ToDoList": [
       {
         "ListTitle": "HEJHEJ",

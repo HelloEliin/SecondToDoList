@@ -37,7 +37,7 @@ namespace ToDoApp
                 "[4] MENU FOR USERS\n" +
                 "[5] CREATE NEW USER\n" +
                 "[6] SHOW ALL MODS\n" +
-                "[7] MY LISTS" +
+                "[7] MY LISTS\n" +
                 "[10] SIGN OUT");
         }
 
@@ -161,7 +161,6 @@ namespace ToDoApp
                     else
                     {
                         ListProgram.ToDolistMenu(userIndex);
-                        //ToDoListMenu.ListMenu(userIndex);
                     }
                     break;
 
