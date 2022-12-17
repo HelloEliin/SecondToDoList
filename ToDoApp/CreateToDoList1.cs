@@ -77,6 +77,8 @@ namespace ToDoApp
             var json = CreateUserFile.GetJson();
             int num = 0;
 
+            
+
             Console.WriteLine("\n\n\nSELECT LIST TO DELETE OR PRESS 'Q' TO QUIT. \n");
             EveryListTitleInJson(user);
             var choosenList = Console.ReadLine().ToLower();
@@ -123,6 +125,11 @@ namespace ToDoApp
         public static void ChangeListName(int user)
         {
             var json = CreateUserFile.GetJson();
+            if (json[user].ToDoList.Count == 0)
+            {
+                Console.WriteLine("\n\nNo lists to view");
+                return;
+            }
             int num = 0;
 
             Console.WriteLine("\n\n\nSELECT LIST TO RENAME OR PRESS 'Q' TO QUIT. \n");
@@ -170,6 +177,13 @@ namespace ToDoApp
         public static void ViewOneList(int user)
         {
             var json = CreateUserFile.GetJson();
+
+            if (json[user].ToDoList.Count == 0)
+            {
+                Console.WriteLine("\n\nNo lists to view");
+                return;
+            }
+
             Console.WriteLine("\n\n\nSELECT LIST TO VIEW PRESS 'Q' TO QUIT.\n");
             EveryListTitleInJson(user);
             var choosenList = Console.ReadLine().ToLower();

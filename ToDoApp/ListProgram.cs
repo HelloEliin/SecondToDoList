@@ -31,12 +31,10 @@ namespace ToDoList
                         break;
 
                     case "v":
-
-                        //isThereAnyLists = Validation.IsThereAnyLists(userIndex);
-                        //if (isThereAnyLists == true)
+                        isThereAnyLists = Validation.IsThereAnyLists(userIndex);
+                        if (isThereAnyLists == true)
                         {
-                            //CreateToDoList.ViewAllList(userIndex);
-                            ToDoListMenu.ListMenu(userIndex);
+                             ToDoListMenu.ListMenu(userIndex);
                         }
 
                         break;
