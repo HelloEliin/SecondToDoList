@@ -12,11 +12,6 @@ namespace ToDoApp
         public static bool IsThereAnyLists(int user)
         {
             var json = CreateUserFile.GetJson();
-            //if(json?.Any() != true)
-            //{
-            //    Console.WriteLine("ja");
-            //    return false;
-            //}
             if (json[user].ToDoList.Any() != true)
             {
                 Console.WriteLine("You have no lists.");

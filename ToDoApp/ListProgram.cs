@@ -1,4 +1,5 @@
 ﻿using System.Security.Cryptography.X509Certificates;
+using System.Text.Json.Serialization;
 using ToDoApp;
 
 namespace ToDoList
@@ -13,7 +14,7 @@ namespace ToDoList
 
             do
             {
-
+                var json = CreateUserFile.GetJson();
                 ToDoListMenu.StartMenu(userIndex);
                 menuChoice = Console.ReadLine().ToLower();
 
@@ -52,14 +53,17 @@ namespace ToDoList
                         }
                         break;
 
-                    case "q":
-                        Console.WriteLine("Do you want to quit? y/n");
-                        string yesOrNo = Console.ReadLine().ToLower();
-
-                        if (yesOrNo == "y")
+                    case "b":
+                        if (json[userIndex].AccessLevelOne == true || json[userIndex].AccessLevelMod)
                         {
-                            isRunning = false;
+                            UserMenus.UserSystemMenu(userIndex);
                         }
+
+                        if (json[userIndex].AccessLevelAdm == true)
+                        {
+                            UserMenus.UserSystemMenu(userIndex);
+                        }
+
 
                         break;
 

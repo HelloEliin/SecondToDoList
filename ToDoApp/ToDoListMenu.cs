@@ -12,7 +12,7 @@ namespace ToDoApp
             "[V]iew lists and listmenu\n" +
             "[C]reate new list\n" +
             "[D]elete list\n" +
-            "[Q]uit");
+            "[B]ack to start");
         }
 
 
@@ -34,7 +34,7 @@ namespace ToDoApp
             "[M]ark task as complete\n" +
             "[T]o do menu\n" +
             "[D]elete to-do\n" +
-            "[S]ort lists");
+            "[O]rder my lists");
 
             string choice = Console.ReadLine().ToLower();
 
@@ -61,7 +61,7 @@ namespace ToDoApp
                 case "d":
                     AddNewTask.DeleteTask(userIndex);
                     break;
-                case "s":
+                case "o":
                   
                     CreateToDoList.SortLists(userIndex);
                     break;

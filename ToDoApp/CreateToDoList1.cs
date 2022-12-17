@@ -7,6 +7,7 @@ using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Security.Cryptography.X509Certificates;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace ToDoApp
@@ -330,7 +331,7 @@ namespace ToDoApp
         {
             var json = CreateUserFile.GetJson();
 
-            Console.WriteLine("\n\n\n\nALL OF YOUR FINISED LISTS.\n\n");
+            Console.WriteLine("\n\n\n\n - ALL OF YOUR FINISHED LISTS -\n\n");
 
             for (int i = 0; i < json[user].ToDoList.Count; i++)
             {
@@ -339,7 +340,7 @@ namespace ToDoApp
                 var orNull = json[user].ToDoList[i].Task.Any();
                 if (allDone == true && orNull == true)
                 {
-                    Console.WriteLine(json[user].ToDoList[i].ListTitle);
+                    Console.WriteLine("\n\n" + json[user].ToDoList[i].ListTitle);
                     AddNewTask.EveryTaskInList(i, user);
 
                 }
@@ -447,7 +448,7 @@ namespace ToDoApp
 
                     if (!allCompleted || json[user].ToDoList[i].Task.Count == 0)
                     {
-                        Console.WriteLine(json[user].ToDoList[i].ListTitle);
+                        Console.WriteLine("\n\n" + json[user].ToDoList[i].ListTitle);
                     }
                 }
 

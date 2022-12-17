@@ -12,7 +12,7 @@ namespace ToDoApp
 
         public static void FrontPageMenu()
         {
-            Console.WriteLine("\n\n\n\nUSERSYSTEM\n\n" +
+            Console.WriteLine("\n\n\n\n - MY TO DO LISTS -\n\n" +
                 "[S]IGN IN \n" +
                 "[C]REATE ACCOUNT \n" +
                 "[Q]UIT PROGRAM");
@@ -37,6 +37,7 @@ namespace ToDoApp
                 "[4] MENU FOR USERS\n" +
                 "[5] CREATE NEW USER\n" +
                 "[6] SHOW ALL MODS\n" +
+                "[7] MY LISTS" +
                 "[10] SIGN OUT");
         }
 
@@ -197,6 +198,19 @@ namespace ToDoApp
 
                         CreateUser.ShowAllMods();
                         UserMenus.UserSystemMenu(userIndex);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Try again");
+                        UserMenus.UserSystemMenu(userIndex);
+                    }
+                    break;
+                case "7":
+                    if (json[userIndex].AccessLevelAdm == true)
+                    {
+
+                        ListProgram.ToDolistMenu(userIndex);
+
                     }
                     else
                     {
