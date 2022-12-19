@@ -106,7 +106,7 @@ namespace ToDoApp
             if (yesOrNo == "y")
             {
                 Console.WriteLine("LIST DELETED.");
-                json.RemoveAt(num);
+                json[user].ToDoList.RemoveAt(num);
                 CreateUserFile.UpDate(json);
             }
             else if (yesOrNo == "n")
