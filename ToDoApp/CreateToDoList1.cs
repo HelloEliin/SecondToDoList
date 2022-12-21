@@ -28,7 +28,7 @@ namespace ToDoApp
         public static void CreateNewToDoList(int userIndex)
         {
             var json = CreateUserFile.GetJson();
-            Console.WriteLine("\n\nENTER NAME OF LIS OR PRESS 'Q' TO QUIT.\n");
+            Console.WriteLine("\n\nENTER NAME OF LIST OR PRESS 'Q' TO QUIT.\n");
             var listName = Console.ReadLine().ToUpper();
             if (listName == "Q")
             {
@@ -111,6 +111,13 @@ namespace ToDoApp
             {
                 Console.WriteLine("LIST DELETED.");
                 json[user].ToDoList.RemoveAt(num);
+                for (int i = 0; i < json[user].ToDoList.Count; i++)
+                {
+                    json[user].ToDoList[i].Id = i;
+                    CreateUserFile.UpDate(json);
+                }
+
+
                 CreateUserFile.UpDate(json);
             }
             else if (yesOrNo == "n")

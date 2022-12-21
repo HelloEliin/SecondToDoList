@@ -133,6 +133,12 @@ namespace ToDoApp
                     Console.WriteLine("TO-DO REMOVED.");
                     json[user].ToDoList[num].Task.RemoveAt(taskToRemove);
 
+                    for (int i = 0; i < json[user].ToDoList[num].Task.Count; i++)
+                    {
+                        json[user].ToDoList[num].Task[i].Id = i;
+                        CreateUserFile.UpDate(json);
+                    }
+
                     CreateUserFile.UpDate(json);
 
 
