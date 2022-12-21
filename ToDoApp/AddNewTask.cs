@@ -51,7 +51,8 @@ namespace ToDoApp
                 var task = new Task()
                 {
                     TaskTitle = taskToAdd,
-                    Completed = false
+                    Completed = false,
+                    Id = json[user].ToDoList[num].Task.Count + 1,
                 };
 
 

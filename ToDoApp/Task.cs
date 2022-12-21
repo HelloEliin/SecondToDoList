@@ -7,5 +7,7 @@ namespace ToDoApp
         public string TaskTitle { get; set; }
         public bool Completed { get; set; }
 
+        public int Id { get; set; }
+
     }
 }

@@ -12,7 +12,8 @@ namespace ToDoApp
 {
     public class CreateUser
     {
-
+        public int Id { get; set; } 
+        public static int startId = 0;
         public string FirstName { get; set; }
         public string LastName { get; set; }
 
@@ -30,8 +31,6 @@ namespace ToDoApp
         public static void CreateNewUser()
         {
             var json = CreateUserFile.GetJson();
-            //var listFile = new CreateToDoListFile();
-            //listFile.CreateFile();
 
             Console.WriteLine("\nENTER USERNAME (OR PRESS 'Q' TO QUIT)");
             var userName = Console.ReadLine();
@@ -177,6 +176,7 @@ namespace ToDoApp
 
             var user = new CreateUser()
             {
+                Id = startId++,
                 FirstName = firstName,
                 LastName = lastName,
                 UserName = userName,

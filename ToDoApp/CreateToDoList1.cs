@@ -22,6 +22,9 @@ namespace ToDoApp
         public bool ThisWeek { get; set; }
         public bool Expired { get; set; }
 
+        public int Id { get; set; } 
+        public static int startId = 0;
+
         public static void CreateNewToDoList(int userIndex)
         {
             var json = CreateUserFile.GetJson();
@@ -45,6 +48,7 @@ namespace ToDoApp
                 Date = DateTime.Now.ToString("G"),
                 ThisWeek = false,
                 Expired = false,
+                Id = json[userIndex].ToDoList.Count + 1,
 
             };
 
