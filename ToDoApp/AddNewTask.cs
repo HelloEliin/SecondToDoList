@@ -135,7 +135,7 @@ namespace ToDoApp
 
                     for (int i = 0; i < json[user].ToDoList[num].Task.Count; i++)
                     {
-                        json[user].ToDoList[num].Task[i].Id = i;
+                        json[user].ToDoList[num].Task[i].Id = i + 1;
                         CreateUserFile.UpDate(json);
                     }
 
