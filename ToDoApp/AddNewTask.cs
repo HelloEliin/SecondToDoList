@@ -32,7 +32,7 @@ namespace ToDoApp
                 return;
             }
 
-            bool isValidList = Validation.IsThereValidList(num,user);
+            bool isValidList = Validation.IsThereValidList(num, user);
             if (!isValidList)
             {
                 return;
@@ -227,7 +227,7 @@ namespace ToDoApp
                 return;
             }
 
-            bool isTaskExisting = Validation.IsThereValidTask(task, num,user);
+            bool isTaskExisting = Validation.IsThereValidTask(task, num, user);
             if (!isTaskExisting)
             {
                 return;

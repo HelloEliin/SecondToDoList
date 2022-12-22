@@ -52,6 +52,7 @@ namespace ToDoApp
 
             };
 
+
             json[userIndex].ToDoList.Add(newList);
             CreateUserFile.UpDate(json);
 
@@ -111,14 +112,6 @@ namespace ToDoApp
             {
                 Console.WriteLine("LIST DELETED.");
                 json[user].ToDoList.RemoveAt(num);
-                for (int i = 0; i < json[user].ToDoList.Count; i++)
-                {
-                    json[user].ToDoList[i].Id = i;
-                    CreateUserFile.UpDate(json);
-                }
-
-
-                CreateUserFile.UpDate(json);
             }
             else if (yesOrNo == "n")
             {
@@ -128,6 +121,19 @@ namespace ToDoApp
             {
                 Console.WriteLine("Only 'y' or 'n'.");
             }
+
+
+            for (int i = 0; i < json[user].ToDoList.Count; i++)
+            {
+               
+                json[user].ToDoList[i].Id = i + 1;
+              
+            }
+
+
+
+            CreateUserFile.UpDate(json);
+
 
             return;
 

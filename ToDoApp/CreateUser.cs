@@ -13,7 +13,7 @@ namespace ToDoApp
     public class CreateUser
     {
         public int Id { get; set; } 
-        public static int startId = 0;
+        public static int startId = 1;
         public string FirstName { get; set; }
         public string LastName { get; set; }
 
