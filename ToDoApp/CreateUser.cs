@@ -13,20 +13,16 @@ namespace ToDoApp
     public class CreateUser
     {
         public int Id { get; set; } 
-        public static int startId = 1;
+        public static int startId = 0;
         public string FirstName { get; set; }
         public string LastName { get; set; }
-
         public string UserName { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
-
         public bool AccessLevelOne { get; set; }
         public bool AccessLevelMod { get; set; }
         public bool AccessLevelAdm { get; set; }
-
         public List<CreateToDoList> ToDoList { get; set; }  
-
 
         public static void CreateNewUser()
         {
@@ -66,7 +62,7 @@ namespace ToDoApp
 
                 if (string.IsNullOrWhiteSpace(userName))
                 {
-                    Console.WriteLine("You have to choose username");
+                    Console.WriteLine("You have to choose username (OR PRESS 'Q' TO QUIT)");
 
                 }
                 usernameAvalible = IsUserNameAvalible(userName);
@@ -74,7 +70,7 @@ namespace ToDoApp
             }
 
 
-            Console.WriteLine("ENTER FIRST NAME");
+            Console.WriteLine("ENTER FIRST NAME (OR PRESS 'Q' TO QUIT)");
             var firstName = Console.ReadLine();
 
             if (firstName == "q" || firstName == "Q")
@@ -86,7 +82,7 @@ namespace ToDoApp
             {
                 do
                 {
-                    Console.WriteLine("You have to enter first name");
+                    Console.WriteLine("You have to enter first name (OR PRESS 'Q' TO QUIT)");
                     firstName = Console.ReadLine();
                     if (firstName == "q" || firstName == "Q")
                     {
@@ -99,7 +95,7 @@ namespace ToDoApp
 
 
 
-            Console.WriteLine("\nENTER YOUR LASTNAME");
+            Console.WriteLine("\nENTER YOUR LASTNAME (OR PRESS 'Q' TO QUIT)");
             var lastName = Console.ReadLine();
             if (lastName == "q" || lastName == "Q")
             {
@@ -110,7 +106,7 @@ namespace ToDoApp
             {
                 do
                 {
-                    Console.WriteLine("You have to enter lastname");
+                    Console.WriteLine("You have to enter lastname (OR PRESS 'Q' TO QUIT)");
                     lastName = Console.ReadLine();
                     if (lastName == "q" || lastName == "Q")
                     {
@@ -122,8 +118,12 @@ namespace ToDoApp
 
 
 
-            Console.WriteLine("\nENTER YOUR EMAIL");
-            var email = Console.ReadLine();
+            Console.WriteLine("\nENTER YOUR EMAIL (OR PRESS 'Q' TO QUIT)");
+            string email = Console.ReadLine();
+            if(email == "q" || email == "Q")
+            {
+                return;
+            }
 
             string theEmail = IsValidEmail(email);
 
@@ -131,7 +131,7 @@ namespace ToDoApp
             {
                 do
                 {
-                    Console.WriteLine("ENTER NEW EMAIL");
+                    Console.WriteLine("ENTER NEW EMAIL (OR PRESS 'Q' TO QUIT)");
                     email = Console.ReadLine();
                     theEmail = IsValidEmail(email);
 
@@ -147,7 +147,7 @@ namespace ToDoApp
 
 
 
-            Console.WriteLine("\nENTER A PASSWORD. (MIN 8 LETTERS, 1 BIG LETTER AND ONE SYMBOL)");
+            Console.WriteLine("\nENTER A PASSWORD. (MIN 8 LETTERS, 1 BIG LETTER AND ONE SYMBOL OR PRESS 'Q' TO QUIT)");
             var password = ReadPassword();
 
             if (password == "q" || password == "Q")
@@ -159,7 +159,7 @@ namespace ToDoApp
             {
                 do
                 {
-                    Console.WriteLine("\nENTER NEW PASSWORD");
+                    Console.WriteLine("\nENTER NEW PASSWORD (OR PRESS 'Q' TO QUIT)");
                     password = ReadPassword();
                     validOrNot = ValidPassword(password);
                     if (password == "q" || password == "Q")
@@ -227,7 +227,7 @@ namespace ToDoApp
                 return;
             }
 
-            Console.WriteLine("\n\nSELECT NEW ACCESSLEVEL\n");
+            Console.WriteLine("\n\nSELECT NEW ACCESSLEVEL (OR PRESS 'Q' TO QUIT)\n");
             Console.WriteLine(
                 "[1] ACCESSLEVEL MODERATOR\n" +
                 "[2] ACCESSLEVEL ADMIN\n\n");
@@ -245,7 +245,7 @@ namespace ToDoApp
             {
                 do
                 {
-                    Console.WriteLine("That level don't exists. Try again.");
+                    Console.WriteLine("That level doesn't exists. Try again. (OR PRESS 'Q' TO QUIT)");
                     whatAccess = Console.ReadLine();
                     if (whatAccess == "2" || whatAccess == "1")
                     {
@@ -295,7 +295,7 @@ namespace ToDoApp
                 return;
             }
 
-            Console.WriteLine("\n\nSELECT NEW ACCESSLEVEL\n");
+            Console.WriteLine("\n\nSELECT NEW ACCESSLEVEL (OR PRESS 'Q' TO QUIT)\n");
             Console.WriteLine(
                 "[1] ACCESSLEVEL ONE\n" +
                 "[2] ACCESSLEVEL MODERATOR\n");
@@ -313,7 +313,7 @@ namespace ToDoApp
             {
                 do
                 {
-                    Console.WriteLine("That level don't exists. Try again.");
+                    Console.WriteLine("That level doesn't exists. (PRESS 'Q' TO QUIT)");
                     whatAccess = Console.ReadLine();
                     if (whatAccess == "2" || whatAccess == "1")
                     {
@@ -412,7 +412,7 @@ namespace ToDoApp
                 return;
             }
 
-            Console.WriteLine("\nENTER NEW USERNAME");
+            Console.WriteLine("\nENTER NEW USERNAME (OR PRESS 'Q' TO QUIT)");
             var newUserName = Console.ReadLine();
             if (newUserName == "q" || newUserName == "Q")
             {
@@ -424,7 +424,7 @@ namespace ToDoApp
 
                 if (String.IsNullOrWhiteSpace(newUserName))
                 {
-                    Console.WriteLine("You have to enter new username");
+                    Console.WriteLine("You have to enter new username (OR PRESS 'Q' TO QUIT)");
                     newUserName = Console.ReadLine();
                     if (newUserName == "q" || newUserName == "Q")
                     {
@@ -454,7 +454,7 @@ namespace ToDoApp
                 return;
             }
 
-            Console.WriteLine("\nENTER A PASSWORD. (MIN 8 LETTERS, 1 BIG LETTER AND ONE SYMBOL)");
+            Console.WriteLine("\nENTER A PASSWORD. (MIN 8 LETTERS, 1 BIG LETTER AND ONE SYMBOL OR PRESS 'Q' TO QUIT)");
             var newPassword = ReadPassword();
 
             if (newPassword == "q" || newPassword == "Q")
@@ -469,7 +469,7 @@ namespace ToDoApp
             {
                 do
                 {
-                    Console.WriteLine("\nENTER NEW PASSWORD");
+                    Console.WriteLine("\nENTER NEW PASSWORD (OR PRESS 'Q' TO QUIT)");
                     newPassword = ReadPassword();
                     validOrNot = ValidPassword(newPassword);
                     if (newPassword == "q" || newPassword == "Q")
@@ -650,7 +650,7 @@ namespace ToDoApp
                 do
                 {
 
-                    Console.WriteLine("You have to enter new email");
+                    Console.WriteLine("You have to enter new email. (OR PRESS 'Q' TO QUIT)");
                     email = Console.ReadLine();
                     if (email == "q" || email == "Q")
                     {
@@ -665,7 +665,7 @@ namespace ToDoApp
             {
                 do
                 {
-                    Console.WriteLine("That doesn't look like an email. Try again.");
+                    Console.WriteLine("That doesn't look like an email. (OR PRESS 'Q' TO QUIT)");
                     email = Console.ReadLine();
                     if (email == "q" || email == "Q")
                     {

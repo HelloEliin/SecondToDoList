@@ -24,7 +24,6 @@ namespace ToDoApp
         public static bool IsThereValidList(int choosenList, int user)
         {
             var json = CreateUserFile.GetJson();
-
             if (choosenList > json[user].ToDoList.Count - 1 || choosenList < 0)
             {
                 Console.WriteLine("\n\nThat list dont exist.");
@@ -61,7 +60,6 @@ namespace ToDoApp
         public static bool IsAllComplete(int num, int user)
         {
             var json = CreateUserFile.GetJson();
-
             bool allCompleted = json[user].ToDoList[num].Task.All(x => x.Completed == true);
             if (allCompleted)
             {
