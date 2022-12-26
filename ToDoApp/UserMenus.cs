@@ -61,25 +61,25 @@ namespace ToDoApp
                     UserMenus.MenuForAdmin();
                     break;
                 case "2":
-                    CreateUser.ShowAllUsers();
+                    UserHandler.ShowAllUsers();
                     break;
                 case "3":
                     EditUserMenu();
                     break;
                 case "4":
-                    CreateUser.DeleteUser();
+                    UserHandler.DeleteUser();
                     break;
                 case "5":
                     CreateUser.CreateNewUser();
                     break;
                 case "6":
-                    CreateUser.PromoteUser();
+                    UserHandler.PromoteUser();
                     break;
                 case "7":
-                    CreateUser.DemoteUser();
+                    UserHandler.DemoteUser();
                     break;
                 case "8":
-                    CreateUser.SearchUser();
+                    UserHandler.SearchUser();
                     break;
                 default:
                     Console.WriteLine("Try again.");
@@ -106,16 +106,16 @@ namespace ToDoApp
                     UserMenus.MenuForAdmin();
                     break;
                 case "2":
-                    CreateUser.ChangeUsername();
+                    UserHandler.ChangeUsername();
                     break;
                 case "3":
-                    CreateUser.ChangeUsersPassword();
+                    UserHandler.ChangeUsersPassword();
                     break;
                 case "4":
-                    CreateUser.ChangeUsersName();
+                    UserHandler.ChangeUsersName();
                     break;
                 case "5":
-                    CreateUser.ChangeUsersEmail();
+                    UserHandler.ChangeUsersEmail();
                     break;
             }
         }
@@ -144,18 +144,18 @@ namespace ToDoApp
             switch (choice)
             {
                 case "1":
-                    CreateUser.ShowMyUserInfo(userIndex);
+                    UserHandler.ShowMyUserInfo(userIndex);
                     UserMenus.UserSystemMenu(userIndex);
                     break;
                 case "2":
-                    CreateUser.EditOwnProfile(userIndex);
+                    UserHandler.EditOwnProfile(userIndex);
                     UserMenus.UserSystemMenu(userIndex);
 
                     break;
                 case "3":
                     if (json[userIndex].AccessLevelAdm == true)
                     {
-                        CreateUser.ShowAllUsers();
+                        UserHandler.ShowAllUsers();
                         UserMenus.UserSystemMenu(userIndex);
                     }
                     else
@@ -195,7 +195,7 @@ namespace ToDoApp
                     if (json[userIndex].AccessLevelAdm == true)
                     {
 
-                        CreateUser.ShowAllMods();
+                        UserHandler.ShowAllMods();
                         UserMenus.UserSystemMenu(userIndex);
                     }
                     else

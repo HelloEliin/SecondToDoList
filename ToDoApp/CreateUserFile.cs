@@ -3,8 +3,8 @@ using System.Text.Json;
 
 namespace ToDoApp
 {
-       
-        public class CreateUserFile
+
+    public class CreateUserFile
         {
 
             private static string _currentDi = Environment.CurrentDirectory;
@@ -15,7 +15,7 @@ namespace ToDoApp
             {
                 if (!File.Exists(_path))
                 {
-                    using (var fs = File.Create(_path)) { }
+
                     File.WriteAllText(_path, "[]");
 
 

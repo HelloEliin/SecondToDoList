@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ToDoApp
 {
-    public class AddNewTask
+    public class TaskHandler
     {
 
 
@@ -19,7 +19,7 @@ namespace ToDoApp
             int num = 0;
 
             Console.WriteLine("\n\n\nSELECT LIST TO ADD TO-DO'S TO OR PRESS 'Q' TO QUIT.\n");
-            CreateToDoList.EveryListTitleInJson(user);
+            ListHandler.EveryListTitleInJson(user);
             var choosenList = Console.ReadLine().ToLower();
             if (choosenList == "q")
             {
@@ -69,7 +69,7 @@ namespace ToDoApp
         {
             var json = CreateUserFile.GetJson();
             Console.WriteLine("\n\n\nSELECT LIST TO DELETE TO-DO FROM OR PRESS 'Q' TO QUIT.");
-            CreateToDoList.EveryListTitleInJson(user);
+            ListHandler.EveryListTitleInJson(user);
             var choosenList = Console.ReadLine().ToLower();
             if (choosenList == "q")
             {
@@ -82,14 +82,11 @@ namespace ToDoApp
                 Console.WriteLine("You have to choose a number.");
                 return;
             }
-
             bool isExisting = Validation.IsThereValidList(num, user);
             if (!isExisting)
             {
                 return;
             }
-
-
             bool isTasks = Validation.IsThereAnyTasks(num, user);
             if (isTasks == false)
             {
@@ -174,7 +171,7 @@ namespace ToDoApp
         {
             var json = CreateUserFile.GetJson();
             Console.WriteLine("\n\n\nSELECT LIST TO EDIT TO-DO IN OR PRESS 'Q' TO QUIT.\n");
-            CreateToDoList.EveryListTitleInJson(user);
+            ListHandler.EveryListTitleInJson(user);
             var choosenList = Console.ReadLine().ToLower();
             if (choosenList == "q")
             {
@@ -261,7 +258,7 @@ namespace ToDoApp
         {
             var json = CreateUserFile.GetJson();
             Console.WriteLine("\n\n\nSELECT LIST TO MARK COMPLETED TO-DO'S OR PRESS 'Q' TO QUIT.\n");
-            CreateToDoList.EveryListTitleInJson(user);
+            ListHandler.EveryListTitleInJson(user);
             var listChoice = Console.ReadLine().ToLower();
             if (listChoice == "q")
             {

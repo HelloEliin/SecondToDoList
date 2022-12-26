@@ -25,7 +25,7 @@ namespace ToDoApp
             }
 
             Console.WriteLine("\n\nPASSWORD OR TYPE '10' TO QUIT");
-            var password = CreateUser.ReadPassword();
+            var password = UserHandler.ReadPassword();
 
             if (password == "10")
             {

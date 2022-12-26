@@ -43,39 +43,39 @@ namespace ToDoApp
                 case "b":
                     break;
                 case "v":
-                    CreateToDoList.ViewOneList(userIndex);
+                    ListHandler.ViewOneList(userIndex);
                     break;
 
                 case "r":
-                    CreateToDoList.ChangeListName(userIndex);
+                    ListHandler.ChangeListName(userIndex);
                     break;
                 case "a":
-                    AddNewTask.AddTask(userIndex);
+                    TaskHandler.AddTask(userIndex);
                     break;
                 case "m":
-                    AddNewTask.isCompleted(userIndex);
+                    TaskHandler.isCompleted(userIndex);
                     break;
                 case "t":
                     TaskMenu(userIndex);
                     break;
                 case "d":
-                    AddNewTask.DeleteTask(userIndex);
+                    TaskHandler.DeleteTask(userIndex);
                     break;
                 case "o":
-                  
-                    CreateToDoList.SortLists(userIndex);
+
+                    ListHandler.SortLists(userIndex);
                     break;
                 case "1":
-                    CreateToDoList.ShowWeeklyLists(userIndex);
+                    ListHandler.ShowWeeklyLists(userIndex);
                     break;
                 case "2":
-                    CreateToDoList.AddListToCompleteInAWeek(userIndex);
+                    ListHandler.AddListToCompleteInAWeek(userIndex);
                     break;
                 case "3":
-                    CreateToDoList.UnFinishedLists(userIndex);
+                    ListHandler.UnFinishedLists(userIndex);
                     break;
                 case "4":
-                    CreateToDoList.FinishedLists(userIndex);
+                    ListHandler.FinishedLists(userIndex);
                     break;
                 default:
                     Console.WriteLine("Try again.");
@@ -97,10 +97,10 @@ namespace ToDoApp
             switch (choice)
             {
                 case "r":
-                    AddNewTask.ChangeTaskName(userIndex);
+                    TaskHandler.ChangeTaskName(userIndex);
                     break;
                 case "d":
-                    AddNewTask.DeleteTask(userIndex);
+                    TaskHandler.DeleteTask(userIndex);
                     break;
                 case "b":
                     ListMenu(userIndex);

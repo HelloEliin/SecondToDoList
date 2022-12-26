@@ -26,7 +26,7 @@ namespace ToDoList
                         bool isThereAnyLists = Validation.IsThereAnyLists(userIndex);
                         if (isThereAnyLists == true)
                         {
-                            CreateToDoList.RecentList(userIndex);
+                            ListHandler.RecentList(userIndex);
                             ToDoListMenu.ListMenu(userIndex);
                         }
                         break;
@@ -49,7 +49,7 @@ namespace ToDoList
                         isThereAnyLists = Validation.IsThereAnyLists(userIndex);
                         if (isThereAnyLists == true)
                         {
-                            CreateToDoList.DeleteList(userIndex);
+                            ListHandler.DeleteList(userIndex);
                         }
                         break;
 
