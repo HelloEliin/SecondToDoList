@@ -49,7 +49,7 @@ namespace ToDoApp
         public static bool IsThereValidTask(int task, int choosenList, int user)
         {
             var json = CreateUserFile.GetJson();
-            if (json[user].ToDoList[choosenList].Task.Count - 1 < task || json[user].ToDoList[choosenList].Task.Count < 0)
+            if (json[user].ToDoList[choosenList].Task.Count - 1 < task || json[user].ToDoList[choosenList].Task.Count > 0)
             {
                 Console.WriteLine("\n\nThat to-do dont exist.");
                 return false;
