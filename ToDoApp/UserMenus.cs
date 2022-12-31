@@ -85,9 +85,6 @@ namespace ToDoApp
                     Console.WriteLine("Try again.");
                     break;
             }
-
-
-
         }
 
         public static void EditUserMenu()
@@ -124,23 +121,17 @@ namespace ToDoApp
         public static void UserSystemMenu(int userIndex)
         {
             var json = CreateUserFile.GetJson();
-
             if (json[userIndex].AccessLevelOne == true || json[userIndex].AccessLevelMod == true)
             {
                 UserMenus.MenuForUserAndMod();
             }
-
             if (json[userIndex].AccessLevelAdm == true)
             {
 
                 UserMenus.MenuForAdmin();
 
             }
-
             var choice = Console.ReadLine();
-
-
-
             switch (choice)
             {
                 case "1":

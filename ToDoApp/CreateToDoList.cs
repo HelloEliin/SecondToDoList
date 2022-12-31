@@ -14,14 +14,11 @@ namespace ToDoApp
 {
     public class CreateToDoList
     {
-
-
         public string ListTitle { get; set; }
         public List<Task> Task { get; set; }
         public string Date { get; set; }
         public bool ThisWeek { get; set; }
         public bool Expired { get; set; }
-
         public int Id { get; set; } 
         public static int startId = 0;
 

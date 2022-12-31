@@ -14,11 +14,6 @@ namespace ToDoApp
             "[D]elete list\n" +
             "[B]ack to start");
         }
-
-
-
-
-
         public static void ListMenu(int userIndex)
         {
             var json = CreateUserFile.GetJson();

@@ -264,16 +264,13 @@ namespace ToDoApp
             {
                 return;
             }
-
             int num = 0;
-
             bool valid = int.TryParse(listChoice, out num);
             if (!valid)
             {
                 Console.WriteLine("You have to choose a number.");
                 return;
             }
-
             bool isThereList = Validation.IsThereValidList(num, user);
             if (!isThereList)
             {
@@ -297,9 +294,7 @@ namespace ToDoApp
             while (isToComplete)
             {
                 Console.WriteLine("\n\n\nSELECT TO-DO TO MARK AS COMPLETE OR PRESS 'Q' TO QUIT.\n");
-
                 EveryTaskInList(num, user);
-
                 var whatToDo = Console.ReadLine().ToLower();
                 int taskToChange = 0;
                 if (whatToDo == "q")
@@ -320,10 +315,7 @@ namespace ToDoApp
 
                 json[user].ToDoList[num].Task[taskToChange].Completed = true;
                 CreateUserFile.UpDate(json);
-
                 Console.WriteLine("\n\n\nHurray!");
-
-
                 bool isItComplete = Validation.IsAllComplete(num, user);
                 if (isItComplete)
                 {
