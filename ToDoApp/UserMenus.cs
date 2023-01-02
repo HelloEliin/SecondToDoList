@@ -189,7 +189,6 @@ namespace ToDoApp
                 case "7":
                     if (json[userIndex].AccessLevelAdm == true)
                     {
-
                         ListProgram.ToDolistMenu(userIndex);
                     }
                     else

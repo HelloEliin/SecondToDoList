@@ -26,9 +26,6 @@
 
             var json = CreateUserFile.GetJson();
             int num = 0;
-
-
-
             Console.WriteLine("\n\n\nSELECT LIST TO DELETE OR PRESS 'Q' TO QUIT. \n");
             EveryListTitleInJson(user);
             var choosenList = Console.ReadLine().ToLower();
@@ -66,22 +63,14 @@
                 Console.WriteLine("Only 'y' or 'n'.");
             }
 
-
-
             for (int i = 0; i < json[user].ToDoList.Count; i++)
             {
 
                 json[user].ToDoList[i].Id = i + 1;
 
             }
-
-
-
-            CreateUserFile.UpDate(json);
-
-
+            CreateUserFile.Update(json);
             return;
-
         }
 
 
@@ -126,7 +115,7 @@
 
             json[user].ToDoList[num].ListTitle = newListName;
 
-            CreateUserFile.UpDate(json);
+            CreateUserFile.Update(json);
             return;
         }
 
@@ -158,24 +147,16 @@
 
             }
             Console.WriteLine(json[user].ToDoList[num].ListTitle);
-
-
             Validation.IsThereAnyTasks(num, user);
             TaskHandler.EveryTaskInList(num, user);
-
-
         }
 
 
         public static void RecentList(int user)
         {
             var json = CreateUserFile.GetJson();
-
             Validation.IsThereAnyLists(user);
-
             json[user].ToDoList = json[user].ToDoList.OrderByDescending(ToDoList => ToDoList.Date).ToList();
-
-
             Console.WriteLine("\n\n\n" + json[user].ToDoList[0].ListTitle);
 
             if (json[user].ToDoList[0].Task.Count == 0)
@@ -200,9 +181,7 @@
                 Console.WriteLine(json[user].ToDoList[0].Task[i].TaskTitle);
                 Console.ForegroundColor = ConsoleColor.White;
             }
-
             return;
-
         }
 
 
@@ -216,7 +195,6 @@
                 index++;
                 Console.WriteLine(json[user].ToDoList[i].ListTitle + "\nPress: " + "[" + index + "]" + "\n");
             }
-
         }
 
 
@@ -234,7 +212,6 @@
             }
 
             var json = CreateUserFile.GetJson();
-
 
             switch (howToSort)
             {
@@ -258,33 +235,26 @@
         public static void SortByOldest(int user)
         {
             var json = CreateUserFile.GetJson();
-
             json[user].ToDoList = json[user].ToDoList.OrderBy(ToDoList => ToDoList.Date).ToList();
-
-            CreateUserFile.UpDate(json);
+            CreateUserFile.Update(json);
             Console.WriteLine("NEW ORDER SAVED.");
         }
 
 
         public static void SortByNewest(int user)
         {
-
             var json = CreateUserFile.GetJson();
-
             json[user].ToDoList = json[user].ToDoList.OrderByDescending(ToDoList => ToDoList.Date).ToList();
-
-            CreateUserFile.UpDate(json);
+            CreateUserFile.Update(json);
             Console.WriteLine("NEW ORDER SAVED.");
-
         }
 
 
         public static void SortByName(int user)
         {
             var json = CreateUserFile.GetJson();
-
             json[user].ToDoList = json[user].ToDoList.OrderBy(ToDoList => ToDoList.ListTitle).ToList();
-            CreateUserFile.UpDate(json);
+            CreateUserFile.Update(json);
             Console.WriteLine("NEW ORDER SAVED.");
         }
 
@@ -292,19 +262,15 @@
         public static void FinishedLists(int user)
         {
             var json = CreateUserFile.GetJson();
-
             Console.WriteLine("\n\n\n\n - ALL OF YOUR FINISHED LISTS -\n\n");
-
             for (int i = 0; i < json[user].ToDoList.Count; i++)
             {
                 var allDone = json[user].ToDoList[i].Task.All(x => x.Completed == true);
-
                 var orNull = json[user].ToDoList[i].Task.Any();
                 if (allDone == true && orNull == true)
                 {
                     Console.WriteLine("\n\n" + json[user].ToDoList[i].ListTitle);
                     TaskHandler.EveryTaskInList(i, user);
-
                 }
 
             }
@@ -315,16 +281,13 @@
         {
             var json = CreateUserFile.GetJson();
             Console.WriteLine("\n\n\n\nWHAT LIST TO ADD TO BE COMPLETED WITHIN A WEEK? PRESS 'Q' TO QUIT.\n\n");
-
             for (int i = 0; i < json[user].ToDoList.Count; i++)
             {
                 if (json[user].ToDoList[i].ThisWeek == false && json[user].ToDoList[i].Expired == false)
                 {
                     Console.WriteLine("[" + i + "] " + json[user].ToDoList[i].ListTitle);
-
                 }
             }
-
             var isThereAnyToMove = json[user].ToDoList.All(x => x.Expired == true);
             if (isThereAnyToMove == true)
             {
@@ -349,10 +312,8 @@
                 Console.WriteLine("That list don't exist");
                 return;
             }
-
-
             json[user].ToDoList[listToMove].ThisWeek = true;
-            CreateUserFile.UpDate(json);
+            CreateUserFile.Update(json);
         }
 
 
@@ -378,7 +339,6 @@
 
                 }
             }
-
 
             var noLists = json[user].ToDoList.All(x => x.ThisWeek == false);
             if (noLists == true)
@@ -406,7 +366,7 @@
                 {
                     json[user].ToDoList[i].Expired = true;
                     json[user].ToDoList[i].ThisWeek = false;
-                    CreateUserFile.UpDate(json);
+                    CreateUserFile.Update(json);
 
                     if (!allCompleted || json[user].ToDoList[i].Task.Count == 0)
                     {

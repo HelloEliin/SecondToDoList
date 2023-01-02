@@ -22,6 +22,7 @@ namespace ToDoApp
             {
                 return;
             }
+
             bool valid = int.TryParse(choosenList, out num);
             if (!valid)
             {
@@ -51,7 +52,6 @@ namespace ToDoApp
                     Completed = false,
                     Id = json[user].ToDoList[num].Task.Count + 1,
                 };
-
 
                 json[user].ToDoList[num].Task.Add(task);
                 CreateUserFile.Update(json);
@@ -87,8 +87,6 @@ namespace ToDoApp
                 return;
             }
 
-
-
             bool isDeleting = true;
             while (isDeleting)
             {
@@ -107,7 +105,6 @@ namespace ToDoApp
                 {
                     Console.WriteLine("You have to choose a number.");
                     return;
-
                 }
 
                 bool isTaskExisting = Validation.IsThereValidTask(taskToRemove, num, user);
@@ -127,24 +124,20 @@ namespace ToDoApp
                     for (int i = 0; i < json[user].ToDoList[num].Task.Count; i++)
                     {
                         json[user].ToDoList[num].Task[i].Id = i + 1;
-                        CreateUserFile.UpDate(json);
+                        CreateUserFile.Update(json);
                     }
-
-                    CreateUserFile.UpDate(json);
-
+                    CreateUserFile.Update(json);
 
                 }
                 else if (yesOrNo == "n")
                 {
                     Console.WriteLine("TO-DO IS NOT REMOVED.");
-
                 }
                 else
                 {
                     Console.WriteLine("Only 'y' or 'n'");
                     isDeleting = false;
                     return;
-
                 }
 
                 bool anyLeft = Validation.IsThereAnyTasks(num, user);
@@ -203,7 +196,6 @@ namespace ToDoApp
             }
 
             int task = 0;
-
             bool validOrNot = int.TryParse(taskToChange, out task);
             if (!valid)
             {
@@ -265,7 +257,6 @@ namespace ToDoApp
                 return;
             }
 
-
             bool isAllCompleted = Validation.IsAllComplete(num, user);
             if (isAllCompleted)
             {
@@ -294,7 +285,6 @@ namespace ToDoApp
                 {
                     return;
                 }
-
                 json[user].ToDoList[num].Task[taskToChange].Completed = true;
                 CreateUserFile.Update(json);
                 Console.WriteLine("\n\n\nHurray!");
@@ -303,9 +293,7 @@ namespace ToDoApp
                 {
                     return;
                 }
-
             }
-
             isToComplete = false;
             return;
         }
@@ -318,13 +306,10 @@ namespace ToDoApp
 
             foreach (var task in json[user].ToDoList[list].Task)
             {
-
                 if (task.Completed == true)
                 {
-
                     Console.ForegroundColor = ConsoleColor.Green;
                 }
-
                 if (task.Completed == false)
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
