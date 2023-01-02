@@ -46,7 +46,7 @@ namespace ToDoApp
             catch (Exception)
             {
 
-                Console.WriteLine("Dosent exist");
+                Console.WriteLine("That list does not exist");
                 return;
             }
 

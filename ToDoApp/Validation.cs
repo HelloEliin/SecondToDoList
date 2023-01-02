@@ -26,7 +26,7 @@ namespace ToDoApp
             var json = CreateUserFile.GetJson();
             if (choosenList > json[user].ToDoList.Count - 1 || choosenList < 0)
             {
-                Console.WriteLine("\n\nThat list dont exist.");
+                Console.WriteLine("\n\nThat list does not exist.");
                 return false;
             }
             return true;
@@ -50,7 +50,7 @@ namespace ToDoApp
             var json = CreateUserFile.GetJson();
             if (json[user].ToDoList[choosenList].Task.Count - 1 < task || task < 0)
             {
-                Console.WriteLine("\n\nThat to-do dont exist.");
+                Console.WriteLine("\n\nThat to-do does not exist.");
                 return false;
             }
             return true;

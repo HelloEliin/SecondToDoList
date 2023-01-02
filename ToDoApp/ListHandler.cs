@@ -272,9 +272,7 @@
                     Console.WriteLine("\n\n" + json[user].ToDoList[i].ListTitle);
                     TaskHandler.EveryTaskInList(i, user);
                 }
-
             }
-
         }
 
         public static void AddListToCompleteInAWeek(int user)
@@ -336,7 +334,6 @@
                         TimeSpan span = expiry - DateTime.Now;
                         Console.WriteLine("\n\n" + json[user].ToDoList[i].ListTitle + "\n*" + span.Days + " days left to complete *");
                     }
-
                 }
             }
 

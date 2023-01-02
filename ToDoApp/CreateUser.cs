@@ -47,10 +47,7 @@ namespace ToDoApp
                     }
                 } while (userName == "" || userName.Any(char.IsWhiteSpace));
             }
-
-
             bool usernameAvalible = UserHandler.IsUserNameAvalible(userName);
-
             while (!usernameAvalible)
             {
                 Console.WriteLine("\nSomeone else already uses this username");
@@ -66,9 +63,7 @@ namespace ToDoApp
 
                 }
                 usernameAvalible = UserHandler.IsUserNameAvalible(userName);
-
             }
-
 
             Console.WriteLine("ENTER FIRST NAME (OR PRESS 'Q' TO QUIT)");
             var firstName = Console.ReadLine();
@@ -89,12 +84,7 @@ namespace ToDoApp
                         return;
                     }
                 } while (firstName == "" || firstName.Any(char.IsWhiteSpace));
-
             }
-
-
-
-
             Console.WriteLine("\nENTER YOUR LASTNAME (OR PRESS 'Q' TO QUIT)");
             var lastName = Console.ReadLine();
             if (lastName == "q" || lastName == "Q")
@@ -113,11 +103,7 @@ namespace ToDoApp
                         return;
                     }
                 } while (lastName == "" || lastName.Any(char.IsWhiteSpace));
-
             }
-
-
-
             Console.WriteLine("\nENTER YOUR EMAIL (OR PRESS 'Q' TO QUIT)");
             string email = Console.ReadLine();
             if(email == "q" || email == "Q")
@@ -144,9 +130,6 @@ namespace ToDoApp
             }
 
             email = theEmail;
-
-
-
             Console.WriteLine("\nENTER A PASSWORD. (MIN 8 LETTERS, 1 BIG LETTER AND ONE SYMBOL OR PRESS 'Q' TO QUIT)");
             var password = UserHandler.ReadPassword();
 
@@ -170,9 +153,7 @@ namespace ToDoApp
                 } while (!validOrNot);
             }
 
-
             Console.WriteLine("\n\n\nYAY! ACCOUNT CREATED, YOU CAN NOW SIGN IN!");
-
 
             var user = new CreateUser()
             {
@@ -186,9 +167,8 @@ namespace ToDoApp
                 AccessLevelMod = false,
                 AccessLevelAdm = false,
                 ToDoList =  new List<CreateToDoList>()
-
-
             };
+
             json.Add(user);
             CreateUserFile.Update(json);
             return;
