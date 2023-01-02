@@ -25,6 +25,7 @@ namespace ToDoApp
         public static void CreateNewToDoList(int userIndex)
         {
             var json = CreateUserFile.GetJson();
+
             Console.WriteLine("\n\nENTER NAME OF LIST OR PRESS 'Q' TO QUIT.\n");
             var listName = Console.ReadLine().ToUpper();
             if (listName == "Q")
@@ -36,8 +37,6 @@ namespace ToDoApp
                 Console.WriteLine("You have to put a name on your list.");
                 return;
             }
-
-
             var newList = new CreateToDoList()
             {
                 ListTitle = listName,
@@ -48,10 +47,8 @@ namespace ToDoApp
                 Id = json[userIndex].ToDoList.Count + 1,
 
             };
-
-
             json[userIndex].ToDoList.Add(newList);
-            CreateUserFile.UpDate(json);
+            CreateUserFile.Update(json);
 
             return;
         }

@@ -189,22 +189,11 @@ namespace ToDoApp
 
 
             };
-
             json.Add(user);
-            CreateUserFile.UpDate(json);
-
+            CreateUserFile.Update(json);
             return;
 
         }
-
-
-
-
-
-
-
-
-
 
     }
 

@@ -27,7 +27,6 @@ namespace ToDoApp
                 "[10] SIGN OUT");
         }
 
-
         public static void MenuForAdmin()
         {
             Console.WriteLine(
@@ -127,9 +126,7 @@ namespace ToDoApp
             }
             if (json[userIndex].AccessLevelAdm == true)
             {
-
                 UserMenus.MenuForAdmin();
-
             }
             var choice = Console.ReadLine();
             switch (choice)
@@ -141,7 +138,6 @@ namespace ToDoApp
                 case "2":
                     UserHandler.EditOwnProfile(userIndex);
                     UserMenus.UserSystemMenu(userIndex);
-
                     break;
                 case "3":
                     if (json[userIndex].AccessLevelAdm == true)
@@ -154,7 +150,6 @@ namespace ToDoApp
                         ListProgram.ToDolistMenu(userIndex);
                     }
                     break;
-
                 case "4":
                     if (json[userIndex].AccessLevelAdm == true)
                     {
@@ -166,7 +161,6 @@ namespace ToDoApp
                         Console.WriteLine("Try again");
                         UserMenus.UserSystemMenu(userIndex);
                     }
-
                     break;
                 case "5":
                     if (json[userIndex].AccessLevelAdm == true)
@@ -174,18 +168,15 @@ namespace ToDoApp
                         CreateUser.CreateNewUser();
                         UserMenus.UserSystemMenu(userIndex);
                     }
-
                     if (json[userIndex].AccessLevelOne == true || json[userIndex].AccessLevelMod == true)
                     {
                         Console.WriteLine("Try again");
                         UserMenus.UserSystemMenu(userIndex);
                     }
-
                     break;
                 case "6":
                     if (json[userIndex].AccessLevelAdm == true)
                     {
-
                         UserHandler.ShowAllMods();
                         UserMenus.UserSystemMenu(userIndex);
                     }
@@ -200,7 +191,6 @@ namespace ToDoApp
                     {
 
                         ListProgram.ToDolistMenu(userIndex);
-
                     }
                     else
                     {

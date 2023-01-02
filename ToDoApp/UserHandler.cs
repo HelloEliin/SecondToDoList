@@ -15,11 +15,7 @@
                 json[user].UserName + "\n\n" +
                 "MY PASSWORD \n" +
                 json[user].Password);
-
         }
-
-
-
 
         public static void PromoteUser()
         {
@@ -62,7 +58,6 @@
 
                 } while (whatAccess != "2" || whatAccess != "1");
             }
-
             if (whatAccess == "1")
             {
 
@@ -71,7 +66,6 @@
                 json[user].AccessLevelOne = false;
 
             }
-
             if (whatAccess == "2")
             {
                 json[user].AccessLevelMod = false;
@@ -81,13 +75,8 @@
             }
 
             Console.WriteLine("\n\nUSER IS PROMOTED");
-            CreateUserFile.UpDate(json);
-
+            CreateUserFile.Update(json);
         }
-
-
-
-
 
         public static void DemoteUser()
         {
@@ -137,20 +126,15 @@
                 json[user].AccessLevelOne = true;
                 json[user].AccessLevelAdm = false;
                 json[user].AccessLevelMod = false;
-
             }
-
             if (whatAccess == "2")
             {
                 json[user].AccessLevelAdm = false;
                 json[user].AccessLevelMod = true;
                 json[user].AccessLevelOne = false;
-
             }
-
             Console.WriteLine("\n\nUSER IS DEMOTED");
-            CreateUserFile.UpDate(json);
-
+            CreateUserFile.Update(json);
         }
 
 
@@ -176,8 +160,7 @@
             {
                 return;
             }
-
-            CreateUserFile.UpDate(json);
+            CreateUserFile.Update(json);
         }
 
 
@@ -199,15 +182,10 @@
                     );
                 whichIndex++;
             }
-
-
         }
-
-
 
         public static void ChangeUsername()
         {
-
             var json = CreateUserFile.GetJson();
             ShowAllUsers();
             int user = SelectUser();
@@ -225,7 +203,6 @@
 
             do
             {
-
                 if (String.IsNullOrWhiteSpace(newUserName))
                 {
                     Console.WriteLine("You have to enter new username (OR PRESS 'Q' TO QUIT)");
@@ -237,15 +214,9 @@
                 }
             } while (string.IsNullOrEmpty(newUserName));
 
-
             Console.WriteLine("\n\nUSERNAME CHANGED");
-
-
             json[user].UserName = newUserName;
-            CreateUserFile.UpDate(json);
-
-
-
+            CreateUserFile.Update(json);
         }
 
 
@@ -257,7 +228,6 @@
             {
                 return;
             }
-
             Console.WriteLine("\nENTER A PASSWORD. (MIN 8 LETTERS, 1 BIG LETTER AND ONE SYMBOL OR PRESS 'Q' TO QUIT)");
             var newPassword = ReadPassword();
 
@@ -265,9 +235,6 @@
             {
                 return;
             }
-            bool isValid = ValidPassword(newPassword);
-
-
             bool validOrNot = ValidPassword(newPassword);
             if (!validOrNot)
             {
@@ -283,16 +250,10 @@
 
                 } while (!validOrNot);
             }
-
             Console.WriteLine("\n\nPASSWORD CHANGED");
-
             json[user].Password = newPassword;
-            CreateUserFile.UpDate(json);
+            CreateUserFile.Update(json);
         }
-
-
-
-
 
         public static void ChangeUsersName()
         {
@@ -304,10 +265,6 @@
 
             ChangeOwnName(user);
         }
-
-
-
-
 
 
         public static void ChangeUsersEmail()
@@ -322,8 +279,6 @@
             ChangeEmail(user);
         }
 
-
-
         public static bool IfMailAlreadyExists(string email)
         {
             var json = CreateUserFile.GetJson();
@@ -334,10 +289,8 @@
                     return true;
                 }
             }
-
             return false;
         }
-
 
         public static bool IsUserNameAvalible(string username)
         {
@@ -349,11 +302,8 @@
                     return false;
                 }
             }
-
             return true;
         }
-
-
         public static string ReadPassword()
         {
             string password = "";
@@ -381,15 +331,10 @@
                 }
 
                 info = Console.ReadKey(true);
-
             }
-
             Console.WriteLine();
-
             return password;
         }
-
-
 
         public static void ShowAllMods()
         {
@@ -401,7 +346,6 @@
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine("\n\nUSERNAME: " + "'" + json[i].UserName + "'");
                 }
-
             }
             Console.ForegroundColor = ConsoleColor.White;
             bool isThereAnyMods = json.All(x => x.AccessLevelMod == false);
@@ -423,7 +367,6 @@
             {
                 return;
             }
-
             for (int i = 0; i < json.Count; i++)
             {
                 if (json[i].UserName == userToSearch)
@@ -443,17 +386,14 @@
                 Console.WriteLine("NO MATCHES FOUND");
                 Console.ForegroundColor = ConsoleColor.White;
             }
-
         }
 
         public static string IsValidEmail(string email)
-
         {
             if (String.IsNullOrWhiteSpace(email))
             {
                 do
                 {
-
                     Console.WriteLine("You have to enter new email. (OR PRESS 'Q' TO QUIT)");
                     email = Console.ReadLine();
                     if (email == "q" || email == "Q")
@@ -462,7 +402,6 @@
                     }
 
                 } while (email == "");
-
             }
 
             if (!email.Contains("@") || !email.Contains(".") || email.Any(char.IsWhiteSpace))
@@ -482,23 +421,11 @@
             bool emailUsed = IfMailAlreadyExists(email);
             if (emailUsed)
             {
-
                 Console.WriteLine("\nThere is already an account with this email.");
                 return "-1";
-
             }
-
             return email;
-
         }
-
-
-
-
-
-
-
-
 
 
         public static bool ValidPassword(string password)
@@ -512,38 +439,27 @@
             {
                 Console.WriteLine("\nToo short");
                 return false;
-
             }
-
             else if (password.Any(char.IsSymbol) == false && password.Any(char.IsUpper) == false)
             {
                 Console.WriteLine("Symbol and big letter requierd");
                 return false;
-
             }
             else if (password.Any(char.IsSymbol) == false)
             {
                 Console.WriteLine("\nSymbol requierd");
                 return false;
-
             }
-
             else if (password.Any(char.IsUpper) == false)
             {
                 Console.WriteLine("\nBig letter requierd");
                 return false;
-
             }
-
             else
             {
                 return true;
             }
-
         }
-
-
-
 
 
         public static void EditOwnProfile(int userIndex)
@@ -567,7 +483,6 @@
             {
                 return;
             }
-
             switch (choice)
             {
                 case "1":
@@ -578,24 +493,16 @@
                     break;
                 case "3":
                     UserHandler.ChangeEmail(userIndex);
-
                     break;
                 default:
                     Console.WriteLine("Try again");
                     break;
             }
-
             return;
         }
 
 
-
-
-
-
-
         public static void ChangeOwnName(int userIndex)
-
         {
             var json = CreateUserFile.GetJson();
             Console.WriteLine("ENTER NEW FIRSTNAME (OR PRESS 'Q' TO QUIT)");
@@ -608,7 +515,6 @@
 
             do
             {
-
                 if (String.IsNullOrWhiteSpace(newFirstName) || newFirstName.Any(char.IsWhiteSpace))
                 {
                     Console.WriteLine("You have to enter new firstname (OR PRESS 'Q' TO QUIT)");
@@ -646,12 +552,9 @@
             } while (string.IsNullOrEmpty(newLastName) || newLastName.Any(char.IsWhiteSpace));
 
             Console.WriteLine("\n\nNAME CHANGED");
-
             json[userIndex].FirstName = newFirstName;
             json[userIndex].LastName = newLastName;
-
-            CreateUserFile.UpDate(json);
-
+            CreateUserFile.Update(json);
         }
 
 
@@ -736,9 +639,8 @@
             }
 
             Console.WriteLine("\n\nPASSWORD CHANGED");
-
             json[userIndex].Password = newPassword;
-            CreateUserFile.UpDate(json);
+            CreateUserFile.Update(json);
         }
 
 
@@ -753,9 +655,7 @@
             {
                 return;
             }
-
             string theEmail = IsValidEmail(newEmail);
-
             if (theEmail == "-1")
             {
                 do
@@ -776,9 +676,7 @@
 
             Console.WriteLine("\n\nEMAIL CHANGED");
             json[user].Email = newEmail;
-
-
-            CreateUserFile.UpDate(json);
+            CreateUserFile.Update(json);
         }
 
 

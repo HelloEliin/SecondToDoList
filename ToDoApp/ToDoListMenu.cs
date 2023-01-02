@@ -57,7 +57,6 @@ namespace ToDoApp
                     TaskHandler.DeleteTask(userIndex);
                     break;
                 case "o":
-
                     ListHandler.SortLists(userIndex);
                     break;
                 case "1":
@@ -77,8 +76,6 @@ namespace ToDoApp
                     break;
             }
         }
-
-
 
         public static void TaskMenu(int userIndex)
         {

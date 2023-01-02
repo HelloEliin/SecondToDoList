@@ -9,9 +9,6 @@ namespace ToDoApp
 {
     public class TaskHandler
     {
-
-
-
         public static void AddTask(int user)
         {
             bool isAdding = true;
@@ -57,13 +54,10 @@ namespace ToDoApp
 
 
                 json[user].ToDoList[num].Task.Add(task);
-                CreateUserFile.UpDate(json);
+                CreateUserFile.Update(json);
 
             }
-
         }
-
-
 
         public static void DeleteTask(int user)
         {
@@ -159,11 +153,7 @@ namespace ToDoApp
                     return;
                 }
 
-
             }
-
-
-
         }
 
 
@@ -199,9 +189,6 @@ namespace ToDoApp
                 return;
             }
 
-
-
-
             Console.WriteLine("\n\n\nSELECT TO-DO TO RENAME OR PRESS 'Q' TO QUIT");
             EveryTaskInList(num, user);
             var taskToChange = Console.ReadLine().ToLower();
@@ -230,7 +217,6 @@ namespace ToDoApp
                 return;
             }
 
-
             Console.WriteLine("\n\n\nENTER NEW TO-DO NAME OR PRESS 'Q' TO QUIT.");
             string newTaskName = Console.ReadLine().ToLower();
             if (String.IsNullOrEmpty(newTaskName))
@@ -242,15 +228,11 @@ namespace ToDoApp
             {
                 return;
             }
-
             Console.WriteLine("TO-DO CHANGED.");
             json[user].ToDoList[num].Task[task].TaskTitle = newTaskName;
 
-            CreateUserFile.UpDate(json);
+            CreateUserFile.Update(json);
             return;
-
-
-
         }
 
 
@@ -314,7 +296,7 @@ namespace ToDoApp
                 }
 
                 json[user].ToDoList[num].Task[taskToChange].Completed = true;
-                CreateUserFile.UpDate(json);
+                CreateUserFile.Update(json);
                 Console.WriteLine("\n\n\nHurray!");
                 bool isItComplete = Validation.IsAllComplete(num, user);
                 if (isItComplete)
@@ -326,9 +308,6 @@ namespace ToDoApp
 
             isToComplete = false;
             return;
-
-
-
         }
 
 

@@ -30,16 +30,13 @@ namespace ToDoList
                             ToDoListMenu.ListMenu(userIndex);
                         }
                         break;
-
                     case "v":
                         isThereAnyLists = Validation.IsThereAnyLists(userIndex);
                         if (isThereAnyLists == true)
                         {
-                             ToDoListMenu.ListMenu(userIndex);
+                            ToDoListMenu.ListMenu(userIndex);
                         }
-
                         break;
-
                     case "c":
                         CreateToDoList.CreateNewToDoList(userIndex);
                         break;
@@ -52,42 +49,28 @@ namespace ToDoList
                             ListHandler.DeleteList(userIndex);
                         }
                         break;
-
                     case "b":
                         if (json[userIndex].AccessLevelOne == true || json[userIndex].AccessLevelMod)
                         {
                             UserMenus.UserSystemMenu(userIndex);
                         }
-
                         if (json[userIndex].AccessLevelAdm == true)
                         {
                             UserMenus.UserSystemMenu(userIndex);
                         }
-
-
                         break;
-
-
                     default:
                         Console.WriteLine("Try again.");
-
                         break;
                 }
 
-
-
             } while (isRunning);
-
-
-                            }
+        }
     }
-
-
 
 }
 
-            
 
 
 
-   
+
