@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Globalization;
+using System.Linq.Expressions;
 using System.Reflection.Metadata.Ecma335;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
@@ -17,24 +18,38 @@ namespace ToDoApp
 
             Console.WriteLine("\n\n\nSELECT LIST TO ADD TO-DO'S TO OR PRESS 'Q' TO QUIT.\n");
             ListHandler.EveryListTitleInJson(user);
-            var choosenList = Console.ReadLine().ToLower();
-            if (choosenList == "q")
+
+            var input = Console.ReadLine().ToLower();
+
+            if (input == "q")
             {
                 return;
             }
 
-            bool valid = int.TryParse(choosenList, out num);
-            if (!valid)
+            int choosenList;
+
+            try
             {
-                Console.WriteLine("You have to choose a number.");
+                choosenList = Convert.ToInt32(input);
+            }
+
+            catch
+            {
+                Console.WriteLine("You have to choose a number");
                 return;
             }
 
-            bool isValidList = Validation.IsThereValidList(num, user);
-            if (!isValidList)
+            try
             {
+                var currentList = json[user].ToDoList[choosenList];
+            }
+            catch (Exception)
+            {
+
+                Console.WriteLine("Dosent exist");
                 return;
             }
+
 
             while (isAdding)
             {
@@ -55,6 +70,7 @@ namespace ToDoApp
 
                 json[user].ToDoList[num].Task.Add(task);
                 CreateUserFile.Update(json);
+
 
             }
         }
@@ -127,7 +143,6 @@ namespace ToDoApp
                         CreateUserFile.Update(json);
                     }
                     CreateUserFile.Update(json);
-
                 }
                 else if (yesOrNo == "n")
                 {

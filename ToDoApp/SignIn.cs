@@ -9,24 +9,18 @@ namespace ToDoApp
         public static int SignInNow()
         {
             var json = CreateUserFile.GetJson();
-
             Console.WriteLine("\n\nUSERNAME OR TYPE '10' TO QUIT");
             var username = Console.ReadLine();
-
             if (username == "10" || username == "10")
             {
                 return -10;
             }
-
             if (string.IsNullOrWhiteSpace(username))
             {
                 return -1;
-
             }
-
             Console.WriteLine("\n\nPASSWORD OR TYPE '10' TO QUIT");
             var password = UserHandler.ReadPassword();
-
             if (password == "10")
             {
                 return -10;
@@ -35,8 +29,6 @@ namespace ToDoApp
             {
                 return -1;
             }
-
-
             for (int i = 0; i < json.Count; i++)
             {
                 if (json[i].UserName == username)
@@ -45,20 +37,9 @@ namespace ToDoApp
                     {
                         return i;
                     }
-
                 }
-
             }
-
             return -1;
-
-
-
         }
-
-
-
-
-
     }
 }
