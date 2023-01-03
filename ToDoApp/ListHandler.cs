@@ -9,7 +9,7 @@ namespace ToDoApp
         public static void ViewAllList(int userId)
         {
             var json = CreateUserFile.GetJson();
-            Validation.IsThereAnyLists(userId);
+            Validation.GetLists(userId);
             Console.WriteLine("\n\n\nALL OF YOUR LISTS\n");
             for(int i = 0; i < json[userId].ToDoList.Count; i++)
             {
@@ -20,12 +20,12 @@ namespace ToDoApp
         }
 
 
-        public static void DeleteList(int user)
+        public static void DeleteList(int userId)
         {
             var json = CreateUserFile.GetJson();
             int num = 0;
             Console.WriteLine("\n\n\nSELECT LIST TO DELETE OR PRESS 'Q' TO QUIT. \n");
-            EveryListTitleInJson(user);
+            EveryListTitleInJson(userId);
             var choosenList = Console.ReadLine().ToLower();
             if (choosenList == "q")
             {
@@ -39,7 +39,7 @@ namespace ToDoApp
                 return;
             }
 
-            bool listExists = Validation.IsThereValidList(num, user);
+            bool listExists = Validation.IsThereValidList(num, userId);
             if (!listExists)
             {
                 return;
@@ -50,7 +50,7 @@ namespace ToDoApp
             if (yesOrNo == "y")
             {
                 Console.WriteLine("LIST DELETED.");
-                json[user].ToDoList.RemoveAt(num);
+                json[userId].ToDoList.RemoveAt(num);
             }
             else if (yesOrNo == "n")
             {
@@ -61,10 +61,10 @@ namespace ToDoApp
                 Console.WriteLine("Only 'y' or 'n'.");
             }
 
-            for (int i = 0; i < json[user].ToDoList.Count; i++)
+            for (int i = 0; i < json[userId].ToDoList.Count; i++)
             {
 
-                json[user].ToDoList[i].Id = i + 1;
+                json[userId].ToDoList[i].Id = i + 1;
 
             }
             CreateUserFile.Update(json);
@@ -72,13 +72,13 @@ namespace ToDoApp
         }
 
 
-        public static void ChangeListName(int user)
+        public static void ChangeListName(int userId)
         {
             var json = CreateUserFile.GetJson();
             int num = 0;
 
             Console.WriteLine("\n\n\nSELECT LIST TO RENAME OR PRESS 'Q' TO QUIT. \n");
-            EveryListTitleInJson(user);
+            EveryListTitleInJson(userId);
 
             var choosenList = Console.ReadLine().ToLower();
             if (choosenList == "q")
@@ -91,7 +91,7 @@ namespace ToDoApp
                 Console.WriteLine("You have to choose a number.");
                 return;
             }
-            bool validOrNot = Validation.IsThereValidList(num, user);
+            bool validOrNot = Validation.IsThereValidList(num, userId);
 
             if (!validOrNot)
             {
@@ -111,7 +111,7 @@ namespace ToDoApp
                 return;
             }
 
-            json[user].ToDoList[num].ListTitle = newListName;
+            json[userId].ToDoList[num].ListTitle = newListName;
 
             CreateUserFile.Update(json);
             return;
@@ -119,12 +119,12 @@ namespace ToDoApp
 
 
 
-        public static void ViewOneList(int user)
+        public static void ViewOneList(int userId)
         {
             var json = CreateUserFile.GetJson();
 
             Console.WriteLine("\n\n\nSELECT LIST TO VIEW PRESS 'Q' TO QUIT.\n");
-            EveryListTitleInJson(user);
+            EveryListTitleInJson(userId);
             var choosenList = Console.ReadLine().ToLower();
             if (choosenList == "q")
             {
@@ -138,65 +138,65 @@ namespace ToDoApp
                 Console.WriteLine("You have to choose a number.");
                 return;
             }
-            bool validOrNot = Validation.IsThereValidList(num, user);
+            bool validOrNot = Validation.IsThereValidList(num, userId);
             if (!validOrNot)
             {
                 return;
 
             }
-            Console.WriteLine(json[user].ToDoList[num].ListTitle);
-            Validation.IsThereAnyTasks(num, user);
-            TaskHandler.EveryTaskInList(num, user);
+            Console.WriteLine(json[userId].ToDoList[num].ListTitle);
+            Validation.IsThereAnyTasks(num, userId);
+            TaskHandler.EveryTaskInList(num, userId);
         }
 
 
-        public static void RecentList(int user)
+        public static void RecentList(int userId)
         {
             var json = CreateUserFile.GetJson();
-            Validation.IsThereAnyLists(user);
-            json[user].ToDoList = json[user].ToDoList.OrderByDescending(ToDoList => ToDoList.Date).ToList();
-            Console.WriteLine("\n\n\n" + json[user].ToDoList[0].ListTitle);
+            Validation.GetLists(userId);
+            json[userId].ToDoList = json[userId].ToDoList.OrderByDescending(ToDoList => ToDoList.Date).ToList();
+            Console.WriteLine("\n\n\n" + json[userId].ToDoList[0].ListTitle);
 
-            if (json[user].ToDoList[0].Task.Count == 0)
+            if (json[userId].ToDoList[0].Task.Count == 0)
             {
                 Console.WriteLine("Ooops.. empty! No to-do's here!");
                 return;
             }
 
-            for (int i = 0; i < json[user].ToDoList[0].Task.Count; i++)
+            for (int i = 0; i < json[userId].ToDoList[0].Task.Count; i++)
             {
-                if (json[user].ToDoList[0].Task[i].Completed == true)
+                if (json[userId].ToDoList[0].Task[i].Completed == true)
                 {
 
                     Console.ForegroundColor = ConsoleColor.Green;
                 }
 
-                if (json[user].ToDoList[0].Task[i].Completed == false)
+                if (json[userId].ToDoList[0].Task[i].Completed == false)
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
                 }
 
-                Console.WriteLine(json[user].ToDoList[0].Task[i].TaskTitle);
+                Console.WriteLine(json[userId].ToDoList[0].Task[i].TaskTitle);
                 Console.ForegroundColor = ConsoleColor.White;
             }
             return;
         }
 
 
-        public static void EveryListTitleInJson(int user)
+        public static void EveryListTitleInJson(int userId)
         {
             var json = CreateUserFile.GetJson();
             int index = -1;
 
-            for (int i = 0; i < json[user].ToDoList.Count; i++)
+            for (int i = 0; i < json[userId].ToDoList.Count; i++)
             {
                 index++;
-                Console.WriteLine(json[user].ToDoList[i].ListTitle + "\nPress: " + "[" + index + "]" + "\n");
+                Console.WriteLine(json[userId].ToDoList[i].ListTitle + "\nPress: " + "[" + index + "]" + "\n");
             }
         }
 
 
-        public static void SortLists(int userIndex)
+        public static void SortLists(int userId)
         {
             Console.WriteLine("HOW DO YOU WANT TO ORDER YOUR LISTS?\n" +
                 "[N]ew lists first\n" +
@@ -214,13 +214,13 @@ namespace ToDoApp
             switch (howToSort)
             {
                 case "n":
-                    SortByNewest(userIndex);
+                    SortByNewest(userId);
                     break;
                 case "o":
-                    SortByOldest(userIndex);
+                    SortByOldest(userId);
                     break;
                 case "b":
-                    SortByName(userIndex);
+                    SortByName(userId);
                     break;
                 default:
                     break;
@@ -228,61 +228,61 @@ namespace ToDoApp
             }
         }
 
-        public static void SortByOldest(int user)
+        public static void SortByOldest(int userId)
         {
             var json = CreateUserFile.GetJson();
-            json[user].ToDoList = json[user].ToDoList.OrderBy(ToDoList => ToDoList.Date).ToList();
+            json[userId].ToDoList = json[userId].ToDoList.OrderBy(ToDoList => ToDoList.Date).ToList();
             CreateUserFile.Update(json);
             Console.WriteLine("NEW ORDER SAVED.");
         }
 
 
-        public static void SortByNewest(int user)
+        public static void SortByNewest(int userId)
         {
             var json = CreateUserFile.GetJson();
-            json[user].ToDoList = json[user].ToDoList.OrderByDescending(ToDoList => ToDoList.Date).ToList();
+            json[userId].ToDoList = json[userId].ToDoList.OrderByDescending(ToDoList => ToDoList.Date).ToList();
             CreateUserFile.Update(json);
             Console.WriteLine("NEW ORDER SAVED.");
         }
 
 
-        public static void SortByName(int user)
+        public static void SortByName(int userId)
         {
             var json = CreateUserFile.GetJson();
-            json[user].ToDoList = json[user].ToDoList.OrderBy(ToDoList => ToDoList.ListTitle).ToList();
+            json[userId].ToDoList = json[userId].ToDoList.OrderBy(ToDoList => ToDoList.ListTitle).ToList();
             CreateUserFile.Update(json);
             Console.WriteLine("NEW ORDER SAVED.");
         }
 
 
-        public static void FinishedLists(int user)
+        public static void FinishedLists(int userId)
         {
             var json = CreateUserFile.GetJson();
             Console.WriteLine("\n\n\n\n - ALL OF YOUR FINISHED LISTS -\n\n");
-            for (int i = 0; i < json[user].ToDoList.Count; i++)
+            for (int i = 0; i < json[userId].ToDoList.Count; i++)
             {
-                var allDone = json[user].ToDoList[i].Task.All(x => x.Completed == true);
-                var orNull = json[user].ToDoList[i].Task.Any();
+                var allDone = json[userId].ToDoList[i].Task.All(x => x.Completed == true);
+                var orNull = json[userId].ToDoList[i].Task.Any();
                 if (allDone == true && orNull == true)
                 {
-                    Console.WriteLine("\n\n" + json[user].ToDoList[i].ListTitle);
-                    TaskHandler.EveryTaskInList(i, user);
+                    Console.WriteLine("\n\n" + json[userId].ToDoList[i].ListTitle);
+                    TaskHandler.EveryTaskInList(i, userId);
                 }
             }
         }
 
-        public static void AddListToCompleteInAWeek(int user)
+        public static void AddListToCompleteInAWeek(int userId)
         {
             var json = CreateUserFile.GetJson();
             Console.WriteLine("\n\n\n\nWHAT LIST TO ADD TO BE COMPLETED WITHIN A WEEK? PRESS 'Q' TO QUIT.\n\n");
-            for (int i = 0; i < json[user].ToDoList.Count; i++)
+            for (int i = 0; i < json[userId].ToDoList.Count; i++)
             {
-                if (json[user].ToDoList[i].ThisWeek == false && json[user].ToDoList[i].Expired == false)
+                if (json[userId].ToDoList[i].ThisWeek == false && json[userId].ToDoList[i].Expired == false)
                 {
-                    Console.WriteLine("[" + i + "] " + json[user].ToDoList[i].ListTitle);
+                    Console.WriteLine("[" + i + "] " + json[userId].ToDoList[i].ListTitle);
                 }
             }
-            var isThereAnyToMove = json[user].ToDoList.All(x => x.Expired == true);
+            var isThereAnyToMove = json[userId].ToDoList.All(x => x.Expired == true);
             if (isThereAnyToMove == true)
             {
                 Console.WriteLine("No lists to move :-)");
@@ -301,38 +301,38 @@ namespace ToDoApp
                 Console.WriteLine("You have to choose a number.");
                 return;
             }
-            if (listToMove < json[user].ToDoList.Count - 1 || listToMove > 0)
+            if (listToMove < json[userId].ToDoList.Count - 1 || listToMove > 0)
             {
                 Console.WriteLine("That list don't exist");
                 return;
             }
-            json[user].ToDoList[listToMove].ThisWeek = true;
+            json[userId].ToDoList[listToMove].ThisWeek = true;
             CreateUserFile.Update(json);
         }
 
 
 
-        public static void ShowWeeklyLists(int user)
+        public static void ShowWeeklyLists(int userId)
         {
             var json = CreateUserFile.GetJson();
             Console.WriteLine("\n\n\nYOUR LISTS TO BE COMPLETED IN A WEEK :-)\n");
-            for (int i = 0; i < json[user].ToDoList.Count; i++)
+            for (int i = 0; i < json[userId].ToDoList.Count; i++)
             {
-                if (json[user].ToDoList[i].ThisWeek == true && json[user].ToDoList[i].Expired == false)
+                if (json[userId].ToDoList[i].ThisWeek == true && json[userId].ToDoList[i].Expired == false)
                 {
-                    bool complete = json[user].ToDoList[i].Task.All(x => x.Completed == true);
-                    bool empty = json[user].ToDoList[i].Task.Count == 0;
+                    bool complete = json[userId].ToDoList[i].Task.All(x => x.Completed == true);
+                    bool empty = json[userId].ToDoList[i].Task.Count == 0;
                     if (!complete || empty)
                     {
-                        DateTime start = DateTime.Parse(json[user].ToDoList[i].Date);
+                        DateTime start = DateTime.Parse(json[userId].ToDoList[i].Date);
                         DateTime expiry = start.AddDays(7);
                         TimeSpan span = expiry - DateTime.Now;
-                        Console.WriteLine("\n\n" + json[user].ToDoList[i].ListTitle + "\n*" + span.Days + " days left to complete *");
+                        Console.WriteLine("\n\n" + json[userId].ToDoList[i].ListTitle + "\n*" + span.Days + " days left to complete *");
                     }
                 }
             }
 
-            var noLists = json[user].ToDoList.All(x => x.ThisWeek == false);
+            var noLists = json[userId].ToDoList.All(x => x.ThisWeek == false);
             if (noLists == true)
             {
                 Console.WriteLine("No lists added yet!");
@@ -341,34 +341,34 @@ namespace ToDoApp
         }
 
 
-        public static void UnFinishedLists(int user)
+        public static void UnFinishedLists(int userId)
         {
             var json = CreateUserFile.GetJson();
             Console.WriteLine("\n\n\n- EXPIRED AND UNFINISED LISTS - \n");
 
-            for (int i = 0; i < json[user].ToDoList.Count; i++)
+            for (int i = 0; i < json[userId].ToDoList.Count; i++)
             {
-                DateTime start = DateTime.Parse(json[user].ToDoList[i].Date);
+                DateTime start = DateTime.Parse(json[userId].ToDoList[i].Date);
                 DateTime expiry = start.AddDays(7);
                 TimeSpan span = start - expiry;
 
-                bool allCompleted = json[user].ToDoList[i].Task.All(x => x.Completed == true);
+                bool allCompleted = json[userId].ToDoList[i].Task.All(x => x.Completed == true);
 
                 if (DateTime.Now > expiry)
                 {
-                    json[user].ToDoList[i].Expired = true;
-                    json[user].ToDoList[i].ThisWeek = false;
+                    json[userId].ToDoList[i].Expired = true;
+                    json[userId].ToDoList[i].ThisWeek = false;
                     CreateUserFile.Update(json);
 
-                    if (!allCompleted || json[user].ToDoList[i].Task.Count == 0)
+                    if (!allCompleted || json[userId].ToDoList[i].Task.Count == 0)
                     {
-                        Console.WriteLine("\n\n" + json[user].ToDoList[i].ListTitle);
+                        Console.WriteLine("\n\n" + json[userId].ToDoList[i].ListTitle);
                     }
                 }
 
             }
 
-            var noLists = json[user].ToDoList.All(x => x.Expired == false);
+            var noLists = json[userId].ToDoList.All(x => x.Expired == false);
             if (noLists == true)
             {
                 Console.WriteLine("No expired lists :-)");

@@ -33,7 +33,7 @@ namespace ToDoApp
                 choosenList = Convert.ToInt32(input);
             }
 
-            catch
+            catch(FormatException)
             {
                 Console.WriteLine("You have to choose a number");
                 return;

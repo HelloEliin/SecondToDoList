@@ -21,7 +21,7 @@ namespace ToDoList
                 switch (menuChoice)
                 {
                     case "o":
-                        bool isThereAnyLists = Validation.IsThereAnyLists(userIndex);
+                        bool isThereAnyLists = Validation.GetLists(userIndex);
                         if (isThereAnyLists == true)
                         {
                             ListHandler.RecentList(userIndex);
@@ -29,7 +29,7 @@ namespace ToDoList
                         }
                         break;
                     case "v":
-                        isThereAnyLists = Validation.IsThereAnyLists(userIndex);
+                        isThereAnyLists = Validation.GetLists(userIndex);
                         if (isThereAnyLists == true)
                         {
                             ToDoListMenu.ListMenu(userIndex);
@@ -39,7 +39,7 @@ namespace ToDoList
                         CreateToDoList.CreateNewToDoList(userIndex);
                         break;
                     case "d":
-                        isThereAnyLists = Validation.IsThereAnyLists(userIndex);
+                        isThereAnyLists = Validation.GetLists(userIndex);
                         if (isThereAnyLists == true)
                         {
                             ListHandler.DeleteList(userIndex);

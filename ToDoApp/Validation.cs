@@ -9,10 +9,10 @@ namespace ToDoApp
     {
 
 
-        public static bool IsThereAnyLists(int user)
+        public static bool GetLists(int userId)
         {
             var json = CreateUserFile.GetJson();
-            if (json[user].ToDoList.Any() != true)
+            if (json[userId].ToDoList.Any() != true)
             {
                 Console.WriteLine("You have no lists.");
                 return false;
