@@ -20,8 +20,6 @@ namespace ToDoList
 
                 switch (menuChoice)
                 {
-
-
                     case "o":
                         bool isThereAnyLists = Validation.IsThereAnyLists(userIndex);
                         if (isThereAnyLists == true)
@@ -40,9 +38,7 @@ namespace ToDoList
                     case "c":
                         CreateToDoList.CreateNewToDoList(userIndex);
                         break;
-
                     case "d":
-
                         isThereAnyLists = Validation.IsThereAnyLists(userIndex);
                         if (isThereAnyLists == true)
                         {

@@ -11,7 +11,7 @@
             Console.WriteLine("\n\n\nALL OF YOUR LISTS\n");
             int index = -1;
 
-            foreach (var title in json[userId].ToDoList) { }
+            for(int i = 0; i < json[userId].ToDoList.Count; i++)
             {
                 index++;
                 Console.WriteLine("[" + index + "] " + json[userId].ToDoList[index].ListTitle + "\n");

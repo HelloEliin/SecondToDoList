@@ -70,8 +70,6 @@ namespace ToDoApp
 
                 json[userId].ToDoList[num].Task.Add(task);
                 CreateUserFile.Update(json);
-
-
             }
         }
 
@@ -175,22 +173,18 @@ namespace ToDoApp
             {
                 return;
             }
-
             int num = 0;
-
             bool valid = int.TryParse(choosenList, out num);
             if (!valid)
             {
                 Console.WriteLine("You have to choose a number.");
                 return;
             }
-
             bool isExisting = Validation.IsThereValidList(num, userId);
             if (!isExisting)
             {
                 return;
             }
-
             bool isThereTasks = Validation.IsThereAnyTasks(num, userId);
             if (!isThereTasks)
             {
