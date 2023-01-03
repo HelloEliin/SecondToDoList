@@ -9,12 +9,9 @@
             var json = CreateUserFile.GetJson();
             Validation.IsThereAnyLists(userId);
             Console.WriteLine("\n\n\nALL OF YOUR LISTS\n");
-            int index = -1;
-
             for(int i = 0; i < json[userId].ToDoList.Count; i++)
             {
-                index++;
-                Console.WriteLine("[" + index + "] " + json[userId].ToDoList[index].ListTitle + "\n");
+                Console.WriteLine("[" + i + "] " + json[userId].ToDoList[i].ListTitle + "\n");
             }
             return;
 
