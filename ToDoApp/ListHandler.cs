@@ -1,4 +1,6 @@
-﻿namespace ToDoApp
+﻿using System.Globalization;
+
+namespace ToDoApp
 {
     public class ListHandler
     {
@@ -20,7 +22,6 @@
 
         public static void DeleteList(int user)
         {
-
             var json = CreateUserFile.GetJson();
             int num = 0;
             Console.WriteLine("\n\n\nSELECT LIST TO DELETE OR PRESS 'Q' TO QUIT. \n");
@@ -221,8 +222,6 @@
                 case "b":
                     SortByName(userIndex);
                     break;
-                case "h":
-                    break;
                 default:
                     break;
 
@@ -317,7 +316,6 @@
         {
             var json = CreateUserFile.GetJson();
             Console.WriteLine("\n\n\nYOUR LISTS TO BE COMPLETED IN A WEEK :-)\n");
-
             for (int i = 0; i < json[user].ToDoList.Count; i++)
             {
                 if (json[user].ToDoList[i].ThisWeek == true && json[user].ToDoList[i].Expired == false)
