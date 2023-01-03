@@ -10,14 +10,14 @@ namespace ToDoApp
 {
     public class TaskHandler
     {
-        public static void AddTask(int user)
+        public static void AddTask(int userId)
         {
             bool isAdding = true;
             var json = CreateUserFile.GetJson();
             int num = 0;
 
             Console.WriteLine("\n\n\nSELECT LIST TO ADD TO-DO'S TO OR PRESS 'Q' TO QUIT.\n");
-            ListHandler.EveryListTitleInJson(user);
+            ListHandler.EveryListTitleInJson(userId);
 
             var input = Console.ReadLine().ToLower();
 
@@ -41,7 +41,7 @@ namespace ToDoApp
 
             try
             {
-                var currentList = json[user].ToDoList[choosenList];
+                var currentList = json[userId].ToDoList[choosenList];
             }
             catch (Exception)
             {
@@ -65,21 +65,21 @@ namespace ToDoApp
                 {
                     TaskTitle = taskToAdd,
                     Completed = false,
-                    Id = json[user].ToDoList[num].Task.Count + 1,
+                    Id = json[userId].ToDoList[num].Task.Count + 1,
                 };
 
-                json[user].ToDoList[num].Task.Add(task);
+                json[userId].ToDoList[num].Task.Add(task);
                 CreateUserFile.Update(json);
 
 
             }
         }
 
-        public static void DeleteTask(int user)
+        public static void DeleteTask(int userId)
         {
             var json = CreateUserFile.GetJson();
             Console.WriteLine("\n\n\nSELECT LIST TO DELETE TO-DO FROM OR PRESS 'Q' TO QUIT.");
-            ListHandler.EveryListTitleInJson(user);
+            ListHandler.EveryListTitleInJson(userId);
             var choosenList = Console.ReadLine().ToLower();
             if (choosenList == "q")
             {
@@ -92,12 +92,12 @@ namespace ToDoApp
                 Console.WriteLine("You have to choose a number.");
                 return;
             }
-            bool isExisting = Validation.IsThereValidList(num, user);
+            bool isExisting = Validation.IsThereValidList(num, userId);
             if (!isExisting)
             {
                 return;
             }
-            bool isTasks = Validation.IsThereAnyTasks(num, user);
+            bool isTasks = Validation.IsThereAnyTasks(num, userId);
             if (isTasks == false)
             {
                 return;
@@ -107,7 +107,7 @@ namespace ToDoApp
             while (isDeleting)
             {
                 Console.WriteLine("\n\n\nSELECT TO-DO TO DELETE OR PRESS 'Q' TO QUIT. ");
-                EveryTaskInList(num, user);
+                EveryTaskInList(num, userId);
 
                 var index = Console.ReadLine().ToLower();
                 int taskToRemove = 0;
@@ -123,7 +123,7 @@ namespace ToDoApp
                     return;
                 }
 
-                bool isTaskExisting = Validation.IsThereValidTask(taskToRemove, num, user);
+                bool isTaskExisting = Validation.IsThereValidTask(taskToRemove, num, userId);
                 if (!isTaskExisting)
                 {
                     return;
@@ -135,11 +135,11 @@ namespace ToDoApp
                 if (yesOrNo == "y")
                 {
                     Console.WriteLine("TO-DO REMOVED.");
-                    json[user].ToDoList[num].Task.RemoveAt(taskToRemove);
+                    json[userId].ToDoList[num].Task.RemoveAt(taskToRemove);
 
-                    for (int i = 0; i < json[user].ToDoList[num].Task.Count; i++)
+                    for (int i = 0; i < json[userId].ToDoList[num].Task.Count; i++)
                     {
-                        json[user].ToDoList[num].Task[i].Id = i + 1;
+                        json[userId].ToDoList[num].Task[i].Id = i + 1;
                         CreateUserFile.Update(json);
                     }
                     CreateUserFile.Update(json);
@@ -155,7 +155,7 @@ namespace ToDoApp
                     return;
                 }
 
-                bool anyLeft = Validation.IsThereAnyTasks(num, user);
+                bool anyLeft = Validation.IsThereAnyTasks(num, userId);
                 if (!anyLeft)
                 {
                     return;
@@ -165,11 +165,11 @@ namespace ToDoApp
         }
 
 
-        public static void ChangeTaskName(int user)
+        public static void ChangeTaskName(int userId)
         {
             var json = CreateUserFile.GetJson();
             Console.WriteLine("\n\n\nSELECT LIST TO EDIT TO-DO IN OR PRESS 'Q' TO QUIT.\n");
-            ListHandler.EveryListTitleInJson(user);
+            ListHandler.EveryListTitleInJson(userId);
             var choosenList = Console.ReadLine().ToLower();
             if (choosenList == "q")
             {
@@ -185,20 +185,20 @@ namespace ToDoApp
                 return;
             }
 
-            bool isExisting = Validation.IsThereValidList(num, user);
+            bool isExisting = Validation.IsThereValidList(num, userId);
             if (!isExisting)
             {
                 return;
             }
 
-            bool isThereTasks = Validation.IsThereAnyTasks(num, user);
+            bool isThereTasks = Validation.IsThereAnyTasks(num, userId);
             if (!isThereTasks)
             {
                 return;
             }
 
             Console.WriteLine("\n\n\nSELECT TO-DO TO RENAME OR PRESS 'Q' TO QUIT");
-            EveryTaskInList(num, user);
+            EveryTaskInList(num, userId);
             var taskToChange = Console.ReadLine().ToLower();
             if (taskToChange == "q")
             {
@@ -218,7 +218,7 @@ namespace ToDoApp
                 return;
             }
 
-            bool isTaskExisting = Validation.IsThereValidTask(task, num, user);
+            bool isTaskExisting = Validation.IsThereValidTask(task, num, userId);
             if (!isTaskExisting)
             {
                 return;
@@ -236,18 +236,18 @@ namespace ToDoApp
                 return;
             }
             Console.WriteLine("TO-DO CHANGED.");
-            json[user].ToDoList[num].Task[task].TaskTitle = newTaskName;
+            json[userId].ToDoList[num].Task[task].TaskTitle = newTaskName;
 
             CreateUserFile.Update(json);
             return;
         }
 
 
-        public static void isCompleted(int user)
+        public static void isCompleted(int userId)
         {
             var json = CreateUserFile.GetJson();
             Console.WriteLine("\n\n\nSELECT LIST TO MARK COMPLETED TO-DO'S OR PRESS 'Q' TO QUIT.\n");
-            ListHandler.EveryListTitleInJson(user);
+            ListHandler.EveryListTitleInJson(userId);
             var listChoice = Console.ReadLine().ToLower();
             if (listChoice == "q")
             {
@@ -260,19 +260,19 @@ namespace ToDoApp
                 Console.WriteLine("You have to choose a number.");
                 return;
             }
-            bool isThereList = Validation.IsThereValidList(num, user);
+            bool isThereList = Validation.IsThereValidList(num, userId);
             if (!isThereList)
             {
                 return;
             }
 
-            bool isThereTasks = Validation.IsThereAnyTasks(num, user);
+            bool isThereTasks = Validation.IsThereAnyTasks(num, userId);
             if (!isThereTasks)
             {
                 return;
             }
 
-            bool isAllCompleted = Validation.IsAllComplete(num, user);
+            bool isAllCompleted = Validation.IsAllComplete(num, userId);
             if (isAllCompleted)
             {
                 return;
@@ -282,7 +282,7 @@ namespace ToDoApp
             while (isToComplete)
             {
                 Console.WriteLine("\n\n\nSELECT TO-DO TO MARK AS COMPLETE OR PRESS 'Q' TO QUIT.\n");
-                EveryTaskInList(num, user);
+                EveryTaskInList(num, userId);
                 var whatToDo = Console.ReadLine().ToLower();
                 int taskToChange = 0;
                 if (whatToDo == "q")
@@ -295,15 +295,15 @@ namespace ToDoApp
                     Console.WriteLine("You have to choose a number.");
                     return;
                 }
-                bool isThereTask = Validation.IsThereValidTask(taskToChange, num, user);
+                bool isThereTask = Validation.IsThereValidTask(taskToChange, num, userId);
                 if (!isThereTask)
                 {
                     return;
                 }
-                json[user].ToDoList[num].Task[taskToChange].Completed = true;
+                json[userId].ToDoList[num].Task[taskToChange].Completed = true;
                 CreateUserFile.Update(json);
                 Console.WriteLine("\n\n\nHurray!");
-                bool isItComplete = Validation.IsAllComplete(num, user);
+                bool isItComplete = Validation.IsAllComplete(num, userId);
                 if (isItComplete)
                 {
                     return;
@@ -314,12 +314,12 @@ namespace ToDoApp
         }
 
 
-        public static void EveryTaskInList(int list, int user)
+        public static void EveryTaskInList(int list, int userId)
         {
             var json = CreateUserFile.GetJson();
             int index = -1;
 
-            foreach (var task in json[user].ToDoList[list].Task)
+            foreach (var task in json[userId].ToDoList[list].Task)
             {
                 if (task.Completed == true)
                 {

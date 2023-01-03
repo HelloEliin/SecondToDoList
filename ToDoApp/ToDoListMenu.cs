@@ -5,7 +5,7 @@ namespace ToDoApp
     public class ToDoListMenu
     {
 
-        public static void StartMenu(int userIndex)
+        public static void StartMenu(int userId)
         {
             Console.WriteLine("\n\n\n\n[MY DO-DO LISTS]\n\n" +
             "[O]pen recent list\n" +
@@ -14,7 +14,7 @@ namespace ToDoApp
             "[D]elete list\n" +
             "[B]ack to start");
         }
-        public static void ListMenu(int userIndex)
+        public static void ListMenu(int userId)
         {
             var json = CreateUserFile.GetJson();
             Console.WriteLine("\n\n\n\nLISTMENU\n" +
@@ -22,7 +22,8 @@ namespace ToDoApp
             "--- [2] ADD LISTS TO BE COMPLETE WITHIN A WEEK \n" +
             "--- [3] EXPIRED LISTS \n" +
             "--- [4] FINISHED LISTS \n\n" +
-            "[V]iew lists\n" +
+            "[S]how all my lists\n" +
+            "[V]iew list\n" +
             "[B]ack to startmenu\n" +
             "[R]ename list\n" +
             "[A]dd to-do\n" +
@@ -38,38 +39,40 @@ namespace ToDoApp
                 case "b":
                     break;
                 case "v":
-                    ListHandler.ViewOneList(userIndex);
+                    ListHandler.ViewOneList(userId);
                     break;
-
                 case "r":
-                    ListHandler.ChangeListName(userIndex);
+                    ListHandler.ChangeListName(userId);
                     break;
                 case "a":
-                    TaskHandler.AddTask(userIndex);
+                    TaskHandler.AddTask(userId);
                     break;
                 case "m":
-                    TaskHandler.isCompleted(userIndex);
+                    TaskHandler.isCompleted(userId);
                     break;
                 case "t":
-                    TaskMenu(userIndex);
+                    TaskMenu(userId);
                     break;
                 case "d":
-                    TaskHandler.DeleteTask(userIndex);
+                    TaskHandler.DeleteTask(userId);
                     break;
                 case "o":
-                    ListHandler.SortLists(userIndex);
+                    ListHandler.SortLists(userId);
+                    break;
+                case "s":
+                    ListHandler.ViewAllList(userId);
                     break;
                 case "1":
-                    ListHandler.ShowWeeklyLists(userIndex);
+                    ListHandler.ShowWeeklyLists(userId);
                     break;
                 case "2":
-                    ListHandler.AddListToCompleteInAWeek(userIndex);
+                    ListHandler.AddListToCompleteInAWeek(userId);
                     break;
                 case "3":
-                    ListHandler.UnFinishedLists(userIndex);
+                    ListHandler.UnFinishedLists(userId);
                     break;
                 case "4":
-                    ListHandler.FinishedLists(userIndex);
+                    ListHandler.FinishedLists(userId);
                     break;
                 default:
                     Console.WriteLine("Try again.");
@@ -77,7 +80,7 @@ namespace ToDoApp
             }
         }
 
-        public static void TaskMenu(int userIndex)
+        public static void TaskMenu(int userId)
         {
             Console.WriteLine("\n\n\nTO-DO MENU\n" +
            "[R]ename to-do\n" +
@@ -89,13 +92,13 @@ namespace ToDoApp
             switch (choice)
             {
                 case "r":
-                    TaskHandler.ChangeTaskName(userIndex);
+                    TaskHandler.ChangeTaskName(userId);
                     break;
                 case "d":
-                    TaskHandler.DeleteTask(userIndex);
+                    TaskHandler.DeleteTask(userId);
                     break;
                 case "b":
-                    ListMenu(userIndex);
+                    ListMenu(userId);
                     break;
                 default:
                     Console.WriteLine("Try again.");

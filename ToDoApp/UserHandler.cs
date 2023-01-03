@@ -154,7 +154,6 @@
             {
                 json.RemoveAt(user);
                 Console.WriteLine("\n\nUSER IS DELETED");
-
             }
             else
             {
@@ -262,7 +261,6 @@
             {
                 return;
             }
-
             ChangeOwnName(user);
         }
 
@@ -309,13 +307,12 @@
             string password = "";
             ConsoleKeyInfo info = Console.ReadKey(true);
             while (info.Key != ConsoleKey.Enter)
-            {
 
+            {
                 if (info.Key != ConsoleKey.Backspace)
                 {
                     Console.Write("*");
                     password += info.KeyChar;
-
                 }
 
                 else if (info.Key == ConsoleKey.Backspace)
@@ -329,7 +326,6 @@
                         Console.SetCursorPosition(pos - 1, Console.CursorTop);
                     }
                 }
-
                 info = Console.ReadKey(true);
             }
             Console.WriteLine();
@@ -642,9 +638,6 @@
             json[userIndex].Password = newPassword;
             CreateUserFile.Update(json);
         }
-
-
-
 
         public static void ChangeEmail(int user)
         {

@@ -35,7 +35,7 @@ namespace ToDoApp
                 {
                     if (json[i].Password == password)
                     {
-                        return i;
+                        return json[i].Id;
                     }
                 }
             }

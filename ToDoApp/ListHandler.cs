@@ -4,17 +4,17 @@
     {
 
 
-        public static void ViewAllList(int user)
+        public static void ViewAllList(int userId)
         {
             var json = CreateUserFile.GetJson();
-            Validation.IsThereAnyLists(user);
-            int index = -1;
+            Validation.IsThereAnyLists(userId);
             Console.WriteLine("\n\n\nALL OF YOUR LISTS\n");
+            int index = -1;
 
-            foreach (var title in json[user].ToDoList) { }
+            foreach (var title in json[userId].ToDoList) { }
             {
                 index++;
-                Console.WriteLine("[" + index + "] " + json[user].ToDoList + "\n");
+                Console.WriteLine("[" + index + "] " + json[userId].ToDoList[index].ListTitle + "\n");
             }
             return;
 

@@ -14,29 +14,25 @@ namespace ToDoApp
 
             while (isRunning)
             {
-
                 UserMenus.FrontPageMenu();
                 var choice = Console.ReadLine().ToLower();
 
                 switch (choice)
                 {
                     case "s":
-                        int userIndex = SignIn.SignInNow();
-                        if (userIndex == -1)
+                        int userId = SignIn.SignInNow();
+                        if (userId == -1)
                         {
                             Console.WriteLine("\n\nWrong username or password.");
-
                         }
-                        else if (userIndex == -10)
+                        else if (userId == -10)
                         {
                             break;
                         }
-
                         else
                         {
-                            UserMenus.UserSystemMenu(userIndex);
+                            UserMenus.UserSystemMenu(userId);
                         }
-
                         break;
                     case "c":
                         CreateUser.CreateNewUser();
@@ -44,7 +40,6 @@ namespace ToDoApp
                     case "q":
                         isRunning = false;
                         break;
-
                     default:
                         Console.WriteLine("\nChoose option.");
                         break;
