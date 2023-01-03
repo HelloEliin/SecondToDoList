@@ -7,7 +7,7 @@ namespace ToDoList
     public class ListProgram
     {
 
-        public static void ToDolistMenu(int userIndex)
+        public static void ToDolistMenu(int userId)
         {
             string menuChoice;
             bool isRunning = true;
@@ -15,44 +15,44 @@ namespace ToDoList
             do
             {
                 var json = CreateUserFile.GetJson();
-                ToDoListMenu.StartMenu(userIndex);
+                ToDoListMenu.StartMenu(userId);
                 menuChoice = Console.ReadLine().ToLower();
 
                 switch (menuChoice)
                 {
                     case "o":
-                        bool isThereAnyLists = Validation.GetLists(userIndex);
+                        bool isThereAnyLists = Validation.GetLists(userId);
                         if (isThereAnyLists == true)
                         {
-                            ListHandler.RecentList(userIndex);
-                            ToDoListMenu.ListMenu(userIndex);
+                            ListHandler.RecentList(userId);
+                            ToDoListMenu.ListMenu(userId);
                         }
                         break;
                     case "v":
-                        isThereAnyLists = Validation.GetLists(userIndex);
+                        isThereAnyLists = Validation.GetLists(userId);
                         if (isThereAnyLists == true)
                         {
-                            ToDoListMenu.ListMenu(userIndex);
+                            ToDoListMenu.ListMenu(userId);
                         }
                         break;
                     case "c":
-                        CreateToDoList.CreateNewToDoList(userIndex);
+                        CreateToDoList.CreateNewToDoList(userId);
                         break;
                     case "d":
-                        isThereAnyLists = Validation.GetLists(userIndex);
+                        isThereAnyLists = Validation.GetLists(userId);
                         if (isThereAnyLists == true)
                         {
-                            ListHandler.DeleteList(userIndex);
+                            ListHandler.DeleteList(userId);
                         }
                         break;
                     case "b":
-                        if (json[userIndex].AccessLevelOne == true || json[userIndex].AccessLevelMod)
+                        if (json[userId].AccessLevelOne == true || json[userId].AccessLevelMod)
                         {
-                            UserMenus.UserSystemMenu(userIndex);
+                            UserMenus.UserSystemMenu(userId);
                         }
-                        if (json[userIndex].AccessLevelAdm == true)
+                        if (json[userId].AccessLevelAdm == true)
                         {
-                            UserMenus.UserSystemMenu(userIndex);
+                            UserMenus.UserSystemMenu(userId);
                         }
                         break;
                     default:
