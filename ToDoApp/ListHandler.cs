@@ -198,14 +198,14 @@ namespace ToDoApp
 
         public static void SortLists(int userId)
         {
-            Console.WriteLine("HOW DO YOU WANT TO ORDER YOUR LISTS?\n" +
+            Console.WriteLine("\n\nHOW DO YOU WANT TO ORDER YOUR LISTS?\n" +
                 "[N]ew lists first\n" +
-                "[O]ldest list first\n" +
+                "[O]ld list first\n" +
                 "[B]y name\n");
             var howToSort = Console.ReadLine().ToLower();
             if (string.IsNullOrEmpty(howToSort))
             {
-                Console.WriteLine("Try again.");
+                Console.WriteLine("Try again");
                 return;
             }
 
@@ -223,6 +223,7 @@ namespace ToDoApp
                     SortByName(userId);
                     break;
                 default:
+                    Console.WriteLine("Try again");
                     break;
 
             }
